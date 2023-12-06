@@ -1,0 +1,127 @@
+[
+  {
+    "data_center": "phx3",
+    "servers": [
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5001,
+        "device": "phx3-mgt-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5002,
+        "device": "phx3-fpw-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5003,
+        "device": "phx3-fwe-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5004,
+        "device": "phx3-spn-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5005,
+        "device": "phx3-dmz-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5006,
+        "device": "phx3-blf-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5007,
+        "device": "phx3-gmn-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5008,
+        "device": "phx3-fwi-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5009,
+        "device": "phx3-vgr-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5010,
+        "device": "phx3-sbc-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5011,
+        "device": "phx3-sdw-a"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5012,
+        "device": "phx3-imn-f"
+      },
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5013,
+        "device": ""
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5014,
+        "device": "phx3-mdc-a (s1)"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5015,
+        "device": "phx3-mdc-a (s2)"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5016,
+        "device": "phx3-mgt-c"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5017,
+        "device": "phx3-mgt-e"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5018,
+        "device": "phx3-mgt-g"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5019,
+        "device": "phx3-mgt-i"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5020,
+        "device": "phx3-mgt-k"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5021,
+        "device": "phx3-mgt-m"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5022,
+        "device": "phx3-lef-1a"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5023,
+        "device": "phx3-lef-2a"
+      }, 
+      {
+        "terminal_server": "phx3-tsv-a",
+        "port": 5024,
+        "device": "phx3-lef-3a"
+      }
+    ]
+  }
+]
