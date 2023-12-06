@@ -74,7 +74,7 @@ try:
                                   str(server["port"]) + " is: " + expected_device)
                             print("Device found: " + connected_device)
 
-            print("\n###########################")
+            print("\n###########################") 
 
 except Exception as e:
     print("Something went wrong: " + str(e))
