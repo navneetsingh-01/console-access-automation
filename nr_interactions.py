@@ -1,5 +1,7 @@
 import os
 from newrelic_telemetry_sdk import GaugeMetric, CountMetric, SummaryMetric, MetricClient
+from dotenv import load_dotenv
+load_dotenv()
 
 nr_license_key = os.getenv("PROD_NR_LICENSE_KEY")
 
