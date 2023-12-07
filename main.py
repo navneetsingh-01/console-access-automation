@@ -79,6 +79,7 @@ try:
 
     # Update new relic metric information
     update_terminal_server_access()
+    print("New relic Metric information updated")
 
 except Exception as e:
     print("Something went wrong: " + str(e))
