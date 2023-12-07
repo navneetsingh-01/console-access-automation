@@ -7,7 +7,7 @@ nr_license_key = os.getenv("PROD_NR_LICENSE_KEY")
 def update_terminal_server_access():
     metric_client = MetricClient(nr_license_key)
     batch = []
-    key = "terminal_server_access_test"
+    key = "terminal_server_access_test.test"
     metric = GaugeMetric(key, 20)
     batch.append(metric)
     response = metric_client.send_batch(batch)
