@@ -2,6 +2,7 @@ import os
 import time
 import json
 import paramiko
+from nr_interactions import update_terminal_server_access
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -74,7 +75,10 @@ try:
                                   str(server["port"]) + " is: " + expected_device)
                             print("Device found: " + connected_device)
 
-            print("\n###########################") 
+            print("\n###########################")
+
+    # Update new relic metric information
+    update_terminal_server_access()
 
 except Exception as e:
     print("Something went wrong: " + str(e))
