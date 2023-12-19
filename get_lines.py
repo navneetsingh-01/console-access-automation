@@ -32,11 +32,10 @@ try:
             print("error: ", error)
         i = 0
         output = output.split("\r")
+        while i < len(output) and "*" in output[i]:
+            i += 1
+        output = output[i:]
         print(output)
-        # while i < len(output) and "tty" not in output[i].lower():
-        #     i += 1
-        # output = output[i:]
-
         cur = []
         # for idx, val in enumerate(output):
         #     if output[idx] == '*':
