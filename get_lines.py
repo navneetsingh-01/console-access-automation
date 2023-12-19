@@ -35,10 +35,12 @@ try:
         while i < len(output) and "tty" not in output[i].lower():
             i += 1
         output = output[i:]
-        print(output)
-        # for idx, val in enumerate(output):
-        #     if idx%6==0:
-        #         print(val)
+        cur = []
+        for idx, val in enumerate(output):
+            cur.append(val)
+            if idx % 12 == 0:
+                print(cur)
+                cur = []
 
 except Exception as e:
     print(str(e))
