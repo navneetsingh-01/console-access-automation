@@ -35,9 +35,9 @@ try:
         while i < len(output) and "tty" not in output[i].lower():
             i += 1
         output = output[i:]
-        for idx, val in enumerate(output):
-            if idx%6==0: 
-                print(val)
+        # for idx, val in enumerate(output):
+        #     if idx%6==0: 
+        #         print(val)
     
 except Exception as e:
     print(str(e))
