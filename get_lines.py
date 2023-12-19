@@ -31,8 +31,10 @@ try:
         if error:
             print("error: ", error)
         output = output.split()
-        for idx, val in enumerate(output):
-            # if idx%6==0:
-            print(val)
+        i=0
+        while i<len(output) and "*" in output[i]
+            i+=1
+        output = output[i:]
+        print(output)
 except Exception as e:
     print(str(e))
