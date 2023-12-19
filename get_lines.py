@@ -24,7 +24,7 @@ try:
             print("Unable to connect to " + server + ": " + str(e))
             continue
         print("Connected to " + server)
-        stdin, stdout, stderr = client.exec_command('show ip interface brief')
+        stdin, stdout, stderr = client.exec_command('sh lines')
         print("output: ", stdout)
         print("error: ", stderr)
 except Exception as e:
