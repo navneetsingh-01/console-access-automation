@@ -24,8 +24,8 @@ try:
             print("Unable to connect to " + server + ": " + str(e))
             continue
         print("Connected to " + server)
-        stdin, stdout, stderr = client.exec_command('sh version')
-        print("output: ", stdout)
-        print("error: ", stderr)
+        stdin, stdout, stderr = client.exec_command('sh line')
+        print("output: ", stdout.read())
+        print("error: ", stderr.read())
 except Exception as e:
     print(str(e))
