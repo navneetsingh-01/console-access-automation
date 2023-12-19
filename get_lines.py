@@ -27,7 +27,7 @@ try:
         stdin, stdout, stderr = client.exec_command('sh line')
         output = stdout.read().decode()
         error = stderr.read().decode()
-        # print("output: ", output)
+        print("output: ", output)
         if error:
             print("error: ", error)
         i = 0
@@ -35,6 +35,9 @@ try:
         while i < len(output) and "tty" not in output[i].lower():
             i += 1
         output = output[i:]
-        print(output)
+        for idx, val in enumerate(output):
+            if idx%6: 
+                print(val)
+    
 except Exception as e:
     print(str(e))
