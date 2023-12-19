@@ -37,8 +37,10 @@ try:
         output = output[i:]
         cur = []
         for idx, val in enumerate(output):
-            cur.append(val)
-            if idx % 12 == 0:
+            if output[idx] == '*':
+                continue
+            cur.append(output[idx])
+            if len(cur) == 13:
                 print(cur)
                 cur = []
 
