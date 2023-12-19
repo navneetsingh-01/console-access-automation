@@ -1,127 +1,284 @@
-[
-  {
-    "data_center": "phx3",
-    "servers": [
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5001,
-        "device": "phx3-mgt-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5002,
-        "device": "phx3-fpw-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5003,
-        "device": "phx3-fwe-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5004,
-        "device": "phx3-spn-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5005,
-        "device": "phx3-dmz-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5006,
-        "device": "phx3-blf-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5007,
-        "device": "phx3-gmn-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5008,
-        "device": "phx3-fwi-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5009,
-        "device": "phx3-vgr-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5010,
-        "device": "phx3-sbc-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5011,
-        "device": "phx3-sdw-a"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5012,
-        "device": "phx3-imn-f"
-      },
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5013,
-        "device": ""
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5014,
-        "device": "phx3-mdc-a (s1)"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5015,
-        "device": "phx3-mdc-a (s2)"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5016,
-        "device": "phx3-mgt-c"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5017,
-        "device": "phx3-mgt-e"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5018,
-        "device": "phx3-mgt-g"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5019,
-        "device": "phx3-mgt-i"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5020,
-        "device": "phx3-mgt-k"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5021,
-        "device": "phx3-mgt-m"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5022,
-        "device": "phx3-lef-1a"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5023,
-        "device": "phx3-lef-2a"
-      }, 
-      {
-        "terminal_server": "phx3-tsv-a",
-        "port": 5024,
-        "device": "phx3-lef-3a"
-      }
+{
+    "ts": [
+        {
+            "name": "ash-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "ash-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "bom1-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "bom1-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "fra3-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "fra3-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "hnd1-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "hnd1-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "phx3-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "phx3-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "sea3-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "sea3-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "syd1-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "syd1-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "sfo8-ts",
+            "lines": []
+        },
+        {
+            "name": "sfo3-ts",
+            "lines": []
+        },
+        {
+            "name": "sea1-ts",
+            "lines": []
+        },
+        {
+            "name": "dub2-ts",
+            "lines": []
+        },
+        {
+            "name": "atl1-ts",
+            "lines": []
+        },
+        {
+            "name": "bos1-ts",
+            "lines": []
+        },
+        {
+            "name": "chi-ts",
+            "lines": []
+        },
+        {
+            "name": "den1-ts",
+            "lines": []
+        },
+        {
+            "name": "nyc3-ts",
+            "lines": []
+        },
+        {
+            "name": "sfo5-ts",
+            "lines": []
+        },
+        {
+            "name": "pdx-ts",
+            "lines": []
+        },
+        {
+            "name": "mor1-ts",
+            "lines": []
+        },
+        {
+            "name": "sin1-ts",
+            "lines": []
+        },
+        {
+            "name": "sfo3-ts",
+            "lines": []
+        },
+        {
+            "name": "eze2-ts",
+            "lines": []
+        },
+        {
+            "name": "vac2-ts",
+            "lines": []
+        },
+        {
+            "name": "nte-ts",
+            "lines": []
+        },
+        {
+            "name": "tlv2-ts",
+            "lines": []
+        },
+        {
+            "name": "syd-ts",
+            "lines": []
+        },
+        {
+            "name": "lon2-ts",
+            "lines": []
+        },
+        {
+            "name": "ams1-ts",
+            "lines": []
+        },
+        {
+            "name": "sfo8-ts",
+            "lines": []
+        },
+        {
+            "name": "blr1-ts",
+            "lines": []
+        },
+        {
+            "name": "sjc2-ts",
+            "lines": []
+        },
+        {
+            "name": "dub-ts",
+            "lines": []
+        },
+        {
+            "name": "dfw2-ts",
+            "lines": []
+        },
+        {
+            "name": "blr1-ts",
+            "lines": []
+        },
+        {
+            "name": "eze1-ts",
+            "lines": []
+        },
+        {
+            "name": "muc2-ts",
+            "lines": []
+        },
+        {
+            "name": "erf-ts",
+            "lines": []
+        },
+        {
+            "name": "cmn1-ts",
+            "lines": []
+        },
+        {
+            "name": "tlv3-ts",
+            "lines": []
+        },
+        {
+            "name": "txl1-ts",
+            "lines": []
+        },
+        {
+            "name": "par1-ts",
+            "lines": []
+        },
+        {
+            "name": "muc2-sic-ts",
+            "lines": []
+        },
+        {
+            "name": "lon2-sic-ts",
+            "lines": []
+        },
+        {
+            "name": "mel2-ts",
+            "lines": []
+        },
+        {
+            "name": "hyd1-ts",
+            "lines": []
+        },
+        {
+            "name": "mel1-ts",
+            "lines": []
+        },
+        {
+            "name": "clt1-ts",
+            "lines": []
+        },
+        {
+            "name": "pao3-ts",
+            "lines": []
+        },
+        {
+            "name": "sna1-ts",
+            "lines": []
+        },
+        {
+            "name": "den3-ts",
+            "lines": []
+        },
+        {
+            "name": "blr2-ts",
+            "lines": []
+        },
+        {
+            "name": "tlv4-ts",
+            "lines": []
+        },
+        {
+            "name": "bos2-ts",
+            "lines": []
+        },
+        {
+            "name": "ind4-ts",
+            "lines": []
+        },
+        {
+            "name": "sfo6-ts",
+            "lines": []
+        },
+        {
+            "name": "tor1-ts",
+            "lines": []
+        },
+        {
+            "name": "gsoc-ts",
+            "lines": []
+        },
+        {
+            "name": "iad6-ts",
+            "lines": []
+        },
+        {
+            "name": "cle1-ts",
+            "lines": []
+        },
+        {
+            "name": "sea6-ts",
+            "lines": []
+        },
+        {
+            "name": "syd4-ts",
+            "lines": []
+        },
+        {
+            "name": "chi8-ts",
+            "lines": []
+        },
+        {
+            "name": "iad7-ts",
+            "lines": []
+        }
     ]
-  }
-]
+}
