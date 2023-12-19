@@ -36,7 +36,7 @@ try:
             i += 1
         output = output[i:]
         for idx, val in enumerate(output):
-            if idx%6: 
+            if idx%6==0: 
                 print(val)
     
 except Exception as e:
