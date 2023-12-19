@@ -32,17 +32,19 @@ try:
             print("error: ", error)
         i = 0
         output = output.split()
-        while i < len(output) and "tty" not in output[i].lower():
-            i += 1
-        output = output[i:]
+        print(output)
+        # while i < len(output) and "tty" not in output[i].lower():
+        #     i += 1
+        # output = output[i:]
+
         cur = []
-        for idx, val in enumerate(output):
-            if output[idx] == '*':
-                continue
-            cur.append(output[idx])
-            if len(cur) == 13:
-                print(cur)
-                cur = []
+        # for idx, val in enumerate(output):
+        #     if output[idx] == '*':
+        #         continue
+        #     cur.append(output[idx])
+        #     if len(cur) == 13:
+        #         print(cur)
+        #         cur = []
 
 except Exception as e:
     print(str(e))
