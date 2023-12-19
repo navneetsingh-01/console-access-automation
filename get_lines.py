@@ -27,11 +27,11 @@ try:
         stdin, stdout, stderr = client.exec_command('sh line')
         output = stdout.read().decode()
         error = stderr.read().decode()
-        print("output: ", output)
+        # print("output: ", output)
         if error:
             print("error: ", error)
-        output = output.split()
-        i=0
+        output = output.split("\n")
+        i=1
         while i<len(output) and "*" in output[i]:
             i+=1
         output = output[i:]
