@@ -1,5 +1,6 @@
 import os
 import json
+import paramiko
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -9,8 +10,24 @@ ssh_password = os.getenv("SSH_PASSWORD")
 try:
     file = open("dc_list.json")
     data = json.load(file)
-    for item in data:
+    ts = data["ts"]
+    for item in ts:
         server = item["name"]
-        print(server)
+        client = paramiko.SSHClient()
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        connected = False
+        try:
+            client.connect(hostname=server, port=22,
+                           username=ssh_username, password=ssh_password, timeout=10)
+            connected = True
+        except Exception as e:
+            print("Unable to connect to " + server + ": " + str(e))
+            continue
+        print("Connected to " + server)
+        commands = client.invoke_shell()
+        commands.send("show lines\n")
+        output = commands.recv(1000000)
+        output = output.decode("utf-8")
+        print(output)
 except Exception as e:
     print(str(e))
