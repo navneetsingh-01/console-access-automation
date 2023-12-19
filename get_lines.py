@@ -25,7 +25,9 @@ try:
             continue
         print("Connected to " + server)
         stdin, stdout, stderr = client.exec_command('sh line')
-        print("output: ", stdout.read())
-        print("error: ", stderr.read())
+        output = stdout.read().decode()
+        error = stderr.read().decode()
+        print("output: ", output)
+        print("error: ", error)
 except Exception as e:
     print(str(e))
