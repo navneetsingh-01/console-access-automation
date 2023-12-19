@@ -32,7 +32,7 @@ try:
             print("error: ", error)
         output = output.split()
         i=0
-        while i<len(output) and "*" in output[i]
+        while i<len(output) and "*" in output[i]:
             i+=1
         output = output[i:]
         print(output)
