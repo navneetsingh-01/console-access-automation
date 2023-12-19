@@ -34,7 +34,8 @@ try:
         i=1
         while i<len(output) and "*" in output[i]:
             i+=1
-        output = output[i:]
+        output = output[i+1:]
+        "\n".join(output)
         print(output)
 except Exception as e:
     print(str(e))
