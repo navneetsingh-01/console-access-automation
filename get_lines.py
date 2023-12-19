@@ -32,7 +32,7 @@ try:
             print("error: ", error)
         i = 0
         output = output.split()
-        while i < len(output) and "\r" not in output[i]:
+        while i < len(output) and "tty" not in output[i].lower():
             i += 1
         output = output[i:]
         print(output)
