@@ -30,12 +30,11 @@ try:
         # print("output: ", output)
         if error:
             print("error: ", error)
-        output = output.split("\n")
-        i=1
-        while i<len(output) and "*" in output[i]:
-            i+=1
-        output = output[i+1:]
-        "\n".join(output)
+        i = 0
+        output = output.split()
+        while i < len(output) and "\r" not in output[i]:
+            i += 1
+        output = output[i:]
         print(output)
 except Exception as e:
     print(str(e))
