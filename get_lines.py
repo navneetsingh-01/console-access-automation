@@ -32,7 +32,7 @@ try:
             print("error: ", error)
         output = output.split()
         for idx, val in enumerate(output):
-            if idx%6==0:
-                print(val)
+            # if idx%6==0:
+            print(val)
 except Exception as e:
     print(str(e))
