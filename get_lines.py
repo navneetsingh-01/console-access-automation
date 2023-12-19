@@ -31,7 +31,7 @@ try:
         if error:
             print("error: ", error)
         i = 0
-        output = output.split()
+        output = output.split("\r")
         print(output)
         # while i < len(output) and "tty" not in output[i].lower():
         #     i += 1
