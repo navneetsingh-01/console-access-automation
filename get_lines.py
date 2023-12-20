@@ -35,7 +35,10 @@ try:
         for line in (output.splitlines()):
             if 'TTY' in line:
                 cur = line.split()
-                req = cur[0]
+                idx=0
+                if cur[idx] == "*":
+                    idx+=1
+                req = cur[idx]
                 req = req.replace("*", '')
                 data[roty]=req
                 roty+=1
