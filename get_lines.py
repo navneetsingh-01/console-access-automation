@@ -11,7 +11,7 @@ try:
     file = open("dc_list.json")
     data = json.load(file)
     ts = data["ts"]
-    for item in ts:
+    for ts_idx, item in enumerate(ts):
         server = item["name"]
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -30,7 +30,7 @@ try:
         print("output: ", output)
         if error:
             print("error: ", error)
-        data = {}
+        response = {}
         roty = 1
         for line in (output.splitlines()):
             if 'TTY' in line:
@@ -40,9 +40,14 @@ try:
                     idx+=1
                 req = cur[idx]
                 req = req.replace("*", '')
-                data[roty]=req
+                response[roty]=req
                 roty+=1
-        print(data)
+        for rty, tty in response.items():
+            data[ts_idx]["lines"].append({"ROTY": rty, "TTY": tty})
+
+    json_object = json.dumps(data, indent=4)
+    with open("dc_list.json", "w") as outfile:
+        outfile.write(json_object)
        
 except Exception as e:
     print(str(e))
