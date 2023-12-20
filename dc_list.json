@@ -1,99 +1,11 @@
 {
     "ts": [
         {
-            "name": "ash-tsv-b",
+            "name": "dub-ts",
             "lines": []
         },
         {
-            "name": "ash-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "bom1-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "bom1-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "fra3-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "fra3-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "hnd1-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "hnd1-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "phx3-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "phx3-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "sea3-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "sea3-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "syd1-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "syd1-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "sfo8-ts",
-            "lines": []
-        },
-        {
-            "name": "sfo3-ts",
-            "lines": []
-        },
-        {
-            "name": "sea1-ts",
-            "lines": []
-        },
-        {
-            "name": "dub2-ts",
-            "lines": []
-        },
-        {
-            "name": "atl1-ts",
-            "lines": []
-        },
-        {
-            "name": "bos1-ts",
-            "lines": []
-        },
-        {
-            "name": "chi-ts",
-            "lines": []
-        },
-        {
-            "name": "den1-ts",
-            "lines": []
-        },
-        {
-            "name": "nyc3-ts",
-            "lines": []
-        },
-        {
-            "name": "sfo5-ts",
+            "name": "par1-ts",
             "lines": []
         },
         {
@@ -101,51 +13,15 @@
             "lines": []
         },
         {
-            "name": "mor1-ts",
-            "lines": []
-        },
-        {
-            "name": "sin1-ts",
-            "lines": []
-        },
-        {
-            "name": "sfo3-ts",
-            "lines": []
-        },
-        {
-            "name": "eze2-ts",
-            "lines": []
-        },
-        {
-            "name": "vac2-ts",
-            "lines": []
-        },
-        {
-            "name": "nte-ts",
-            "lines": []
-        },
-        {
-            "name": "tlv2-ts",
-            "lines": []
-        },
-        {
-            "name": "syd-ts",
-            "lines": []
-        },
-        {
             "name": "lon2-ts",
             "lines": []
         },
         {
-            "name": "ams1-ts",
+            "name": "mel1-ts",
             "lines": []
         },
         {
-            "name": "sfo8-ts",
-            "lines": []
-        },
-        {
-            "name": "blr1-ts",
+            "name": "bos1-ts",
             "lines": []
         },
         {
@@ -153,27 +29,7 @@
             "lines": []
         },
         {
-            "name": "dub-ts",
-            "lines": []
-        },
-        {
-            "name": "dfw2-ts",
-            "lines": []
-        },
-        {
-            "name": "blr1-ts",
-            "lines": []
-        },
-        {
-            "name": "eze1-ts",
-            "lines": []
-        },
-        {
-            "name": "muc2-ts",
-            "lines": []
-        },
-        {
-            "name": "erf-ts",
+            "name": "tor1-ts",
             "lines": []
         },
         {
@@ -181,7 +37,7 @@
             "lines": []
         },
         {
-            "name": "tlv3-ts",
+            "name": "ams1-ts",
             "lines": []
         },
         {
@@ -189,7 +45,35 @@
             "lines": []
         },
         {
-            "name": "par1-ts",
+            "name": "hyd1-ts",
+            "lines": []
+        },
+        {
+            "name": "nyc3-ts",
+            "lines": []
+        },
+        {
+            "name": "sea1-ts",
+            "lines": []
+        },
+        {
+            "name": "muc2-ts",
+            "lines": []
+        },
+        {
+            "name": "ind1-ts",
+            "lines": []
+        },
+        {
+            "name": "ind4-ts",
+            "lines": []
+        },
+        {
+            "name": "bos2-ts",
+            "lines": []
+        },
+        {
+            "name": "erf-ts",
             "lines": []
         },
         {
@@ -201,19 +85,83 @@
             "lines": []
         },
         {
+            "name": "sfo3-ts",
+            "lines": []
+        },
+        {
+            "name": "nte-ts",
+            "lines": []
+        },
+        {
+            "name": "tlv2-ts",
+            "lines": []
+        },
+        {
+            "name": "fra3-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "fra3-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "vac2-ts",
+            "lines": []
+        },
+        {
+            "name": "phx3-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "phx3-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "blr1-ts",
+            "lines": []
+        },
+        {
+            "name": "eze1-ts",
+            "lines": []
+        },
+        {
+            "name": "atl1-ts",
+            "lines": []
+        },
+        {
+            "name": "dfw2-ts",
+            "lines": []
+        },
+        {
+            "name": "tlv3-ts",
+            "lines": []
+        },
+        {
+            "name": "bom1-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "bom1-tsv-b",
+            "lines": []
+        },
+        {
             "name": "mel2-ts",
             "lines": []
         },
         {
-            "name": "hyd1-ts",
-            "lines": []
-        },
-        {
-            "name": "mel1-ts",
+            "name": "sfo5-ts",
             "lines": []
         },
         {
             "name": "clt1-ts",
+            "lines": []
+        },
+        {
+            "name": "eze2-ts",
+            "lines": []
+        },
+        {
+            "name": "tlv4-ts",
             "lines": []
         },
         {
@@ -229,27 +177,59 @@
             "lines": []
         },
         {
+            "name": "DEL1-TS",
+            "lines": []
+        },
+        {
+            "name": "hnd1-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "hnd1-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "sin1-ts",
+            "lines": []
+        },
+        {
+            "name": "BOS3-TS",
+            "lines": []
+        },
+        {
+            "name": "syd1-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "syd1-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "tok5-ts",
+            "lines": []
+        },
+        {
+            "name": "sea3-tsv-a",
+            "lines": []
+        },
+        {
+            "name": "sea3-tsv-b",
+            "lines": []
+        },
+        {
+            "name": "hyd2-ts",
+            "lines": []
+        },
+        {
             "name": "blr2-ts",
             "lines": []
         },
         {
-            "name": "tlv4-ts",
+            "name": "ash-tsv-a",
             "lines": []
         },
         {
-            "name": "bos2-ts",
-            "lines": []
-        },
-        {
-            "name": "ind4-ts",
-            "lines": []
-        },
-        {
-            "name": "sfo6-ts",
-            "lines": []
-        },
-        {
-            "name": "tor1-ts",
+            "name": "ash-tsv-b",
             "lines": []
         },
         {
@@ -257,11 +237,7 @@
             "lines": []
         },
         {
-            "name": "iad6-ts",
-            "lines": []
-        },
-        {
-            "name": "cle1-ts",
+            "name": "dub3a-ts",
             "lines": []
         },
         {
@@ -269,15 +245,43 @@
             "lines": []
         },
         {
+            "name": "iad7-ts",
+            "lines": []
+        },
+        {
+            "name": "CHI8-TS",
+            "lines": []
+        },
+        {
+            "name": "iad6-ts",
+            "lines": []
+        },
+        {
+            "name": "lab-ts2",
+            "lines": []
+        },
+        {
             "name": "syd4-ts",
             "lines": []
         },
         {
-            "name": "chi8-ts",
+            "name": "aus1-ts",
             "lines": []
         },
         {
-            "name": "iad7-ts",
+            "name": "gru1-ts",
+            "lines": []
+        },
+        {
+            "name": "sfo8-ts",
+            "lines": []
+        },
+        {
+            "name": "sea7-ts",
+            "lines": []
+        },
+        {
+            "name": "mad1-ts",
             "lines": []
         }
     ]
