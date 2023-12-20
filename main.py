@@ -80,8 +80,15 @@ try:
                             buffer -= 1
                         response = conn.recv(2000).decode('utf-8')
                         print(response)
+                        response = response.splitlines()
+                        print(response)
+                    else:
+                        print("Unhandled Response")
+                elif "login" in output.lower():
+                    response = output.splitlines()
+                    print(response)
                 else:
-                    print("Get device name")
+                    print("Unhandled Response")
                 # output = output.split("\n")
                 # for line in output:
                 #     # Handles -> Username:
