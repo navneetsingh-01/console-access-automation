@@ -19,17 +19,21 @@ try:
     file = open("dc_list.json")
     data = json.load(file)
 
-    for item in data:
-        print("Checking terminal server access for: " + item["data_center"])
-        for server in item["servers"]:
+    ts = data["ts"]
+
+    for item in ts:
+        server = item["name"]
+        print("Checking terminal server access for: " + server)
+        for line in item["lines"]:
+            port = 5000 + line["ROTY"]
+            tty = line["TTY"]
             ssh_client = paramiko.SSHClient()
             ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            print("\nConecting to device on port " +
-                  str(server["port"]) + "\n")
+            print("\nConecting to device on port " + str(port) + "\n")
             connected = False
             try:
-                ssh_client.connect(hostname=server["terminal_server"], port=server["port"],
-                                   username=ssh_username, password=ssh_password, timeout=10)
+                ssh_client.connect(
+                    hostname=server, port=port, username=ssh_username, password=ssh_password, timeout=10)
                 connected = True
             except Exception as e:
                 print("Unable to connect: " + str(e))
@@ -52,34 +56,33 @@ try:
 
             # If timeout, means unable to connect to this terminal console server on the corresponding line
             if not buffer_timeout:
-                print("Unable to access device on port " + str(server["port"]))
+                print("Unable to access device on port " + port)
             else:
-                expected_device = server["device"]
                 output = conn.recv(2000).decode('utf-8')
                 print(output)
                 output = output.split("\n")
-                for line in output:
-                    # Handles -> Username:
-                    if "username:" in line.lower():
-                        # Assume the device to be connected will be same as the expected device in the inventory
-                        print("Device connected to port " +
-                              str(server["port"]) + " is: " + expected_device)
-                    # Handles -> <device> login:
-                    if "login:" in line.lower():
-                        connected_device = get_device(line)
-                        if expected_device.lower() in connected_device.lower():
-                            print("Device connected to port " +
-                                  str(server["port"]) + " is: " + expected_device)
-                        else:
-                            print("Expected device connected for port " +
-                                  str(server["port"]) + " is: " + expected_device)
-                            print("Device found: " + connected_device)
+                # for line in output:
+                #     # Handles -> Username:
+                #     if "username:" in line.lower():
+                #         # Assume the device to be connected will be same as the expected device in the inventory
+                #         print("Device connected to port " +
+                #               str(server["port"]) + " is: " + expected_device)
+                #     # Handles -> <device> login:
+                #     if "login:" in line.lower():
+                #         connected_device = get_device(line)
+                #         if expected_device.lower() in connected_device.lower():
+                #             print("Device connected to port " +
+                #                   str(server["port"]) + " is: " + expected_device)
+                #         else:
+                #             print("Expected device connected for port " +
+                #                   str(server["port"]) + " is: " + expected_device)
+                #             print("Device found: " + connected_device)
 
             print("\n###########################")
 
-    # Update new relic metric information
-    update_terminal_server_access()
-    print("New relic Metric information updated")
+    # # Update new relic metric information
+    # update_terminal_server_access()
+    # print("New relic Metric information updated")
 
 except Exception as e:
     print("Something went wrong: " + str(e))

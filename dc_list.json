@@ -1,288 +1,105 @@
 {
-    "ts": [
+  "ts": [
+    {
+      "name": "dub-ts",
+      "lines": [
         {
-            "name": "dub-ts",
-            "lines": []
+          "ROTY": 1,
+          "TTY": "0/2/0"
         },
         {
-            "name": "par1-ts",
-            "lines": []
+          "ROTY": 2,
+          "TTY": "0/2/1"
         },
         {
-            "name": "pdx-ts",
-            "lines": []
+          "ROTY": 3,
+          "TTY": "0/2/2"
         },
         {
-            "name": "lon2-ts",
-            "lines": []
+          "ROTY": 4,
+          "TTY": "0/2/3"
         },
         {
-            "name": "mel1-ts",
-            "lines": []
+          "ROTY": 5,
+          "TTY": "0/2/4"
         },
         {
-            "name": "bos1-ts",
-            "lines": []
+          "ROTY": 6,
+          "TTY": "0/2/5"
         },
         {
-            "name": "sjc2-ts",
-            "lines": []
+          "ROTY": 7,
+          "TTY": "0/2/6"
         },
         {
-            "name": "tor1-ts",
-            "lines": []
+          "ROTY": 8,
+          "TTY": "0/2/7"
         },
         {
-            "name": "cmn1-ts",
-            "lines": []
+          "ROTY": 9,
+          "TTY": "0/2/8"
         },
         {
-            "name": "ams1-ts",
-            "lines": []
+          "ROTY": 10,
+          "TTY": "0/2/9"
         },
         {
-            "name": "txl1-ts",
-            "lines": []
+          "ROTY": 11,
+          "TTY": "0/2/10"
         },
         {
-            "name": "hyd1-ts",
-            "lines": []
+          "ROTY": 12,
+          "TTY": "0/2/11"
         },
         {
-            "name": "nyc3-ts",
-            "lines": []
+          "ROTY": 13,
+          "TTY": "0/2/12"
         },
         {
-            "name": "sea1-ts",
-            "lines": []
+          "ROTY": 14,
+          "TTY": "0/2/13"
         },
         {
-            "name": "muc2-ts",
-            "lines": []
+          "ROTY": 15,
+          "TTY": "0/2/14"
         },
         {
-            "name": "ind1-ts",
-            "lines": []
+          "ROTY": 16,
+          "TTY": "0/2/15"
         },
         {
-            "name": "ind4-ts",
-            "lines": []
+          "ROTY": 17,
+          "TTY": "0/2/16"
         },
         {
-            "name": "bos2-ts",
-            "lines": []
+          "ROTY": 18,
+          "TTY": "0/2/17"
         },
         {
-            "name": "erf-ts",
-            "lines": []
+          "ROTY": 19,
+          "TTY": "0/2/18"
         },
         {
-            "name": "muc2-sic-ts",
-            "lines": []
+          "ROTY": 20,
+          "TTY": "0/2/19"
         },
         {
-            "name": "lon2-sic-ts",
-            "lines": []
+          "ROTY": 21,
+          "TTY": "0/2/20"
         },
         {
-            "name": "sfo3-ts",
-            "lines": []
+          "ROTY": 22,
+          "TTY": "0/2/21"
         },
         {
-            "name": "nte-ts",
-            "lines": []
+          "ROTY": 23,
+          "TTY": "0/2/22"
         },
         {
-            "name": "tlv2-ts",
-            "lines": []
-        },
-        {
-            "name": "fra3-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "fra3-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "vac2-ts",
-            "lines": []
-        },
-        {
-            "name": "phx3-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "phx3-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "blr1-ts",
-            "lines": []
-        },
-        {
-            "name": "eze1-ts",
-            "lines": []
-        },
-        {
-            "name": "atl1-ts",
-            "lines": []
-        },
-        {
-            "name": "dfw2-ts",
-            "lines": []
-        },
-        {
-            "name": "tlv3-ts",
-            "lines": []
-        },
-        {
-            "name": "bom1-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "bom1-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "mel2-ts",
-            "lines": []
-        },
-        {
-            "name": "sfo5-ts",
-            "lines": []
-        },
-        {
-            "name": "clt1-ts",
-            "lines": []
-        },
-        {
-            "name": "eze2-ts",
-            "lines": []
-        },
-        {
-            "name": "tlv4-ts",
-            "lines": []
-        },
-        {
-            "name": "pao3-ts",
-            "lines": []
-        },
-        {
-            "name": "sna1-ts",
-            "lines": []
-        },
-        {
-            "name": "den3-ts",
-            "lines": []
-        },
-        {
-            "name": "DEL1-TS",
-            "lines": []
-        },
-        {
-            "name": "hnd1-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "hnd1-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "sin1-ts",
-            "lines": []
-        },
-        {
-            "name": "BOS3-TS",
-            "lines": []
-        },
-        {
-            "name": "syd1-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "syd1-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "tok5-ts",
-            "lines": []
-        },
-        {
-            "name": "sea3-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "sea3-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "hyd2-ts",
-            "lines": []
-        },
-        {
-            "name": "blr2-ts",
-            "lines": []
-        },
-        {
-            "name": "ash-tsv-a",
-            "lines": []
-        },
-        {
-            "name": "ash-tsv-b",
-            "lines": []
-        },
-        {
-            "name": "gsoc-ts",
-            "lines": []
-        },
-        {
-            "name": "dub3a-ts",
-            "lines": []
-        },
-        {
-            "name": "sea6-ts",
-            "lines": []
-        },
-        {
-            "name": "iad7-ts",
-            "lines": []
-        },
-        {
-            "name": "CHI8-TS",
-            "lines": []
-        },
-        {
-            "name": "iad6-ts",
-            "lines": []
-        },
-        {
-            "name": "lab-ts2",
-            "lines": []
-        },
-        {
-            "name": "syd4-ts",
-            "lines": []
-        },
-        {
-            "name": "aus1-ts",
-            "lines": []
-        },
-        {
-            "name": "gru1-ts",
-            "lines": []
-        },
-        {
-            "name": "sfo8-ts",
-            "lines": []
-        },
-        {
-            "name": "sea7-ts",
-            "lines": []
-        },
-        {
-            "name": "mad1-ts",
-            "lines": []
+          "ROTY": 24,
+          "TTY": "0/2/23"
         }
-    ]
+      ]
+    }
+  ]
 }
