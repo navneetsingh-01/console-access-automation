@@ -56,7 +56,7 @@ try:
 
             # If timeout, means unable to connect to this terminal console server on the corresponding line
             if not buffer_timeout:
-                print("Unable to access device on port " + port)
+                print("Unable to access device on port " + str(port))
             else:
                 output = conn.recv(2000).decode('utf-8')
                 print(output)
