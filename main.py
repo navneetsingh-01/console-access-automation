@@ -70,6 +70,16 @@ try:
                         buffer -= 1
                     response = conn.recv(2000).decode('utf-8')
                     print(response)
+                    if "password" in response.lower():
+                        conn.send(ssh_password + "\n")
+                        buffer = 5
+                        while not conn.recv_ready() and buffer:
+                            print("NOT READY - recv_ready: " +
+                                str(conn.recv_ready()) + "\n")
+                            time.sleep(1)
+                            buffer -= 1
+                        response = conn.recv(2000).decode('utf-8')
+                        print(response)
                 else:
                     print("Get device name")
                 # output = output.split("\n")

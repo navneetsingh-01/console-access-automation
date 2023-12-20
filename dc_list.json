@@ -4,10 +4,6 @@
       "name": "dub-ts",
       "lines": [
         {
-          "ROTY": 1,
-          "TTY": "0/2/0"
-        },
-        {
           "ROTY": 2,
           "TTY": "0/2/1"
         },
