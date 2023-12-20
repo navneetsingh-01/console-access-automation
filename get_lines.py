@@ -43,11 +43,11 @@ try:
                 response[roty]=req
                 roty+=1
         for rty, tty in response.items():
-            data[ts_idx]["lines"].append({"ROTY": rty, "TTY": tty})
+            data["ts"][ts_idx]["lines"].append({"ROTY": rty, "TTY": tty})
 
     json_object = json.dumps(data, indent=4)
     with open("dc_list.json", "w") as outfile:
         outfile.write(json_object)
        
 except Exception as e:
-    print(str(e))
+    print("Something went wrong: " + str(e))
