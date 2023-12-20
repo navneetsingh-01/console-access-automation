@@ -60,7 +60,11 @@ try:
             else:
                 output = conn.recv(2000).decode('utf-8')
                 print(output)
-                output = output.split("\n")
+                if "username" in output.lower():
+                    conn.send(ssh_username)
+                else:
+                    print("Get device name")
+                # output = output.split("\n")
                 # for line in output:
                 #     # Handles -> Username:
                 #     if "username:" in line.lower():
