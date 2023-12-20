@@ -30,20 +30,16 @@ try:
         print("output: ", output)
         if error:
             print("error: ", error)
-        i = 0
-        output = output.split("\r")
-        while i < len(output) and "*" in output[i]:
-            i += 1
-        output = output[i:]
-        print(output)
-        cur = []
-        # for idx, val in enumerate(output):
-        #     if output[idx] == '*':
-        #         continue
-        #     cur.append(output[idx])
-        #     if len(cur) == 13:
-        #         print(cur)
-        #         cur = []
-
+        data = {}
+        roty = 1
+        for line in (output.splitlines()):
+            if 'TTY' in line:
+                cur = line.split()
+                req = cur[0]
+                req = req.replace("*", '')
+                data[roty]=req
+                roty+=1
+        print(data)
+       
 except Exception as e:
     print(str(e))
