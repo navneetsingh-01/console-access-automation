@@ -4,6 +4,7 @@ import json
 import paramiko
 from nr_interactions import update_terminal_server_access
 from dotenv import load_dotenv
+import datetime
 load_dotenv()
 
 ssh_username = os.getenv("SSH_USERNAME")
@@ -14,6 +15,8 @@ try:
     data = json.load(file)
 
     ts = data["ts"]
+
+    nr_data = []
 
     for item in ts:
         server = item["name"]
@@ -75,18 +78,23 @@ try:
                         response = conn.recv(2000).decode('utf-8')
                         print(response)
                         response = response.splitlines()
-                        print(response)
                         for val in response:
                             if len(val):
                                 device = val[:-1]
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
+                        nr_data.append({
+                            "server": server,
+                            "line": tty,
+                            "port": port,
+                            "device": device,
+                            "last_tested": str(datetime.datetime.now())
+                        })
                     else:
                         print("Unhandled Response")
                 elif "login" in output.lower():
                     response = output.splitlines()
-                    print(response)
                     for val in response:
                         if len(val):
                             val = val.split()
@@ -94,29 +102,18 @@ try:
                             break
                     print("Device connected to port " +
                           str(port) + " is: " + device)
-
+                    nr_data.append({
+                        "server": server,
+                        "line": tty,
+                        "port": port,
+                        "device": device,
+                        "last_tested": str(datetime.datetime.now())
+                    })
                 else:
                     print("Unhandled Response")
-                # output = output.split("\n")
-                # for line in output:
-                #     # Handles -> Username:
-                #     if "username:" in line.lower():
-                #         # Assume the device to be connected will be same as the expected device in the inventory
-                #         print("Device connected to port " +
-                #               str(server["port"]) + " is: " + expected_device)
-                #     # Handles -> <device> login:
-                #     if "login:" in line.lower():
-                #         connected_device = get_device(line)
-                #         if expected_device.lower() in connected_device.lower():
-                #             print("Device connected to port " +
-                #                   str(server["port"]) + " is: " + expected_device)
-                #         else:
-                #             print("Expected device connected for port " +
-                #                   str(server["port"]) + " is: " + expected_device)
-                #             print("Device found: " + connected_device)
-
             print("\n###########################")
 
+    print("Data: " + str(nr_data))
     # # Update new relic metric information
     # update_terminal_server_access()
     # print("New relic Metric information updated")
