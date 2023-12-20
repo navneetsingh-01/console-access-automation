@@ -61,7 +61,7 @@ try:
                 output = conn.recv(2000).decode('utf-8')
                 print(output)
                 if "username" in output.lower():
-                    conn.send(ssh_username)
+                    conn.send(ssh_username + "\n")
                     buffer = 5
                     while not conn.recv_ready() and buffer:
                         print("NOT READY - recv_ready: " +
