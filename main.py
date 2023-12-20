@@ -9,12 +9,6 @@ load_dotenv()
 ssh_username = os.getenv("SSH_USERNAME")
 ssh_password = os.getenv("SSH_PASSWORD")
 
-
-def get_device(line):
-    line = line.split()
-    return line[0]
-
-
 try:
     file = open("dc_list.json")
     data = json.load(file)
@@ -75,18 +69,32 @@ try:
                         buffer = 5
                         while not conn.recv_ready() and buffer:
                             print("NOT READY - recv_ready: " +
-                                str(conn.recv_ready()) + "\n")
+                                  str(conn.recv_ready()) + "\n")
                             time.sleep(1)
                             buffer -= 1
                         response = conn.recv(2000).decode('utf-8')
                         print(response)
                         response = response.splitlines()
                         print(response)
+                        for val in response:
+                            if len(val):
+                                device = val[:-1]
+                                break
+                        print("Device connected to port " +
+                              str(port) + " is: " + device)
                     else:
                         print("Unhandled Response")
                 elif "login" in output.lower():
                     response = output.splitlines()
                     print(response)
+                    for val in response:
+                        if len(val):
+                            val = val.split()
+                            device = val[0]
+                            break
+                    print("Device connected to port " +
+                          str(port) + " is: " + device)
+
                 else:
                     print("Unhandled Response")
                 # output = output.split("\n")
