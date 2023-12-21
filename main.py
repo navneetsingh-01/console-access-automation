@@ -153,9 +153,9 @@ try:
             print("\n###########################")
 
     print("Data: " + str(nr_data))
-    # # Update new relic metric information
-    # update_terminal_server_access()
-    # print("New relic Metric information updated")
+    # Update new relic metric information
+    update_terminal_server_access(nr_data)
+    print("New relic Metric information updated")
 
 except Exception as e:
     print("Something went wrong: " + str(e))
