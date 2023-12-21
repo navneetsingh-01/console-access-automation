@@ -55,7 +55,7 @@ try:
             if not buffer_timeout:
                 print("Unable to access device on port " + str(port))
             else:
-                output = conn.recv(2000).decode('utf-8')
+                output = conn.recv(20000).decode('utf-8')
                 print(output)
                 if "user" in output.lower():
                     conn.send(ssh_username + "\n")
@@ -65,7 +65,7 @@ try:
                               str(conn.recv_ready()) + "\n")
                         time.sleep(1)
                         buffer -= 1
-                    response = conn.recv(2000).decode('utf-8')
+                    response = conn.recv(20000).decode('utf-8')
                     print(response)
                     if "password" in response.lower():
                         conn.send(ssh_password + "\n")
@@ -75,7 +75,7 @@ try:
                                   str(conn.recv_ready()) + "\n")
                             time.sleep(1)
                             buffer -= 1
-                        response = conn.recv(2000).decode('utf-8')
+                        response = conn.recv(20000).decode('utf-8')
                         print(response)
                         response = response.splitlines()
                         for val in response:
