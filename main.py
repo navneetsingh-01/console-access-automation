@@ -124,6 +124,30 @@ try:
                         "device": device,
                         "last_tested": str(datetime.datetime.now())
                     })
+                elif "password" in output.lower():
+                    conn.send(ssh_password + "\n")
+                    buffer = 5
+                    while not conn.recv_ready() and buffer:
+                        print("NOT READY - recv_ready: " +
+                                str(conn.recv_ready()) + "\n")
+                        time.sleep(1)
+                        buffer -= 1
+                    response = conn.recv(20000).decode('utf-8')
+                    print(response)
+                    response = response.splitlines()
+                    for val in response:
+                        if len(val):
+                            device = val[:-1]
+                            break
+                    print("Device connected to port " +
+                            str(port) + " is: " + device)
+                    nr_data.append({
+                        "server": server,
+                        "line": tty,
+                        "port": port,
+                        "device": device,
+                        "last_tested": str(datetime.datetime.now())
+                    })
                 else:
                     print("Unhandled Response")
             print("\n###########################")
