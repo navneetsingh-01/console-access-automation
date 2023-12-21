@@ -57,7 +57,7 @@ try:
             else:
                 output = conn.recv(2000).decode('utf-8')
                 print(output)
-                if "username" in output.lower():
+                if "user" in output.lower():
                     conn.send(ssh_username + "\n")
                     buffer = 5
                     while not conn.recv_ready() and buffer:
@@ -99,6 +99,21 @@ try:
                         if len(val):
                             val = val.split()
                             device = val[0]
+                            break
+                    print("Device connected to port " +
+                          str(port) + " is: " + device)
+                    nr_data.append({
+                        "server": server,
+                        "line": tty,
+                        "port": port,
+                        "device": device,
+                        "last_tested": str(datetime.datetime.now())
+                    })
+                elif "#" in output.lower():
+                    response = output.splitlines()
+                    for val in response:
+                        if len(val):
+                            device = val[:-1]
                             break
                     print("Device connected to port " +
                           str(port) + " is: " + device)
