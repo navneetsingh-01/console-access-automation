@@ -11,7 +11,7 @@ ssh_username = os.getenv("SSH_USERNAME")
 ssh_password = os.getenv("SSH_PASSWORD")
 
 try:
-    file = open("dc_list.json")
+    file = open("/home/singhnavneet.su/console-access-automation/dc_list.json")
     data = json.load(file)
 
     ts = data["ts"]
