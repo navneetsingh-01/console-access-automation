@@ -63,6 +63,7 @@ try:
             # If timeout, means unable to connect to this terminal console server on the corresponding line
             if not buffer_timeout:
                 print("Unable to access device on port " + str(port))
+                print("\n###########################")
                 nr_data.append({
                     "server": server,
                     "line": tty,
