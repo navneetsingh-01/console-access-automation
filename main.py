@@ -11,7 +11,8 @@ ssh_username = os.getenv("SSH_USERNAME")
 ssh_password = os.getenv("SSH_PASSWORD")
 
 try:
-    file = open("/home/singhnavneet.su/console-access-automation/dc_list_complete.json")
+    file = open(
+        "/home/singhnavneet.su/console-access-automation/dc_list.json")
     data = json.load(file)
 
     ts = data["ts"]
@@ -54,6 +55,14 @@ try:
             # If timeout, means unable to connect to this terminal console server on the corresponding line
             if not buffer_timeout:
                 print("Unable to access device on port " + str(port))
+                nr_data.append({
+                    "server": server,
+                    "line": tty,
+                    "port": port,
+                    "device": "",
+                    "last_tested": str(datetime.datetime.now()),
+                    "device_available": "false"
+                })
             else:
                 output = conn.recv(20000).decode('utf-8')
                 print(output)
@@ -89,7 +98,8 @@ try:
                             "line": tty,
                             "port": port,
                             "device": device,
-                            "last_tested": str(datetime.datetime.now())
+                            "last_tested": str(datetime.datetime.now()),
+                            "device_available": "true"
                         })
                     else:
                         print("Unhandled Response")
@@ -107,7 +117,8 @@ try:
                         "line": tty,
                         "port": port,
                         "device": device,
-                        "last_tested": str(datetime.datetime.now())
+                        "last_tested": str(datetime.datetime.now()),
+                        "device_available": "true"
                     })
                 elif "#" in output.lower():
                     response = output.splitlines()
@@ -122,14 +133,15 @@ try:
                         "line": tty,
                         "port": port,
                         "device": device,
-                        "last_tested": str(datetime.datetime.now())
+                        "last_tested": str(datetime.datetime.now()),
+                        "device_available": "true"
                     })
                 elif "password" in output.lower():
                     conn.send(ssh_password + "\n")
                     buffer = 5
                     while not conn.recv_ready() and buffer:
                         print("NOT READY - recv_ready: " +
-                                str(conn.recv_ready()) + "\n")
+                              str(conn.recv_ready()) + "\n")
                         time.sleep(1)
                         buffer -= 1
                     response = conn.recv(20000).decode('utf-8')
@@ -140,13 +152,14 @@ try:
                             device = val[:-1]
                             break
                     print("Device connected to port " +
-                            str(port) + " is: " + device)
+                          str(port) + " is: " + device)
                     nr_data.append({
                         "server": server,
                         "line": tty,
                         "port": port,
                         "device": device,
-                        "last_tested": str(datetime.datetime.now())
+                        "last_tested": str(datetime.datetime.now()),
+                        "device_available": "true"
                     })
                 else:
                     print("Unhandled Response")
