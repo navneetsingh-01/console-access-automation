@@ -72,111 +72,113 @@ try:
                     "device_available": "false"
                 })
             else:
-                output = conn.recv(20000).decode('utf-8')
-                print(output)
-                if "user" in output.lower():
-                    conn.send(ssh_username + "\n")
-                    buffer = 5
-                    while not conn.recv_ready() and buffer:
-                        print("NOT READY - recv_ready: " +
-                              str(conn.recv_ready()) + "\n")
-                        time.sleep(1)
-                        buffer -= 1
-                    response = conn.recv(20000).decode('utf-8')
-                    print(response)
-                    if "password" in response.lower():
-                        conn.send(ssh_password + "\n")
-                        buffer = 5
-                        while not conn.recv_ready() and buffer:
-                            print("NOT READY - recv_ready: " +
-                                  str(conn.recv_ready()) + "\n")
-                            time.sleep(1)
-                            buffer -= 1
-                        response = conn.recv(20000).decode('utf-8')
-                        print(response)
-                        response = response.splitlines()
-                        for val in response:
-                            if len(val):
-                                device = val[:-1]
-                                break
-                        print("Device connected to port " +
-                              str(port) + " is: " + device)
-                        nr_data.append({
-                            "server": server,
-                            "line": tty,
-                            "port": port,
-                            "device": device,
-                            "last_tested": str(datetime.datetime.now()),
-                            "device_available": "true"
-                        })
-                    else:
-                        print("Unhandled Response")
-                elif "login" in output.lower():
-                    response = output.splitlines()
-                    for val in response:
-                        if len(val):
-                            val = val.split()
-                            device = val[0]
-                            break
-                    print("Device connected to port " +
-                          str(port) + " is: " + device)
-                    nr_data.append({
-                        "server": server,
-                        "line": tty,
-                        "port": port,
-                        "device": device,
-                        "last_tested": str(datetime.datetime.now()),
-                        "device_available": "true"
-                    })
-                elif "#" in output.lower():
-                    response = output.splitlines()
-                    for val in response:
-                        if len(val):
-                            device = val[:-1]
-                            break
-                    print("Device connected to port " +
-                          str(port) + " is: " + device)
-                    nr_data.append({
-                        "server": server,
-                        "line": tty,
-                        "port": port,
-                        "device": device,
-                        "last_tested": str(datetime.datetime.now()),
-                        "device_available": "true"
-                    })
-                elif "password" in output.lower():
-                    conn.send(ssh_password + "\n")
-                    buffer = 5
-                    while not conn.recv_ready() and buffer:
-                        print("NOT READY - recv_ready: " +
-                              str(conn.recv_ready()) + "\n")
-                        time.sleep(1)
-                        buffer -= 1
-                    response = conn.recv(20000).decode('utf-8')
-                    print(response)
-                    response = response.splitlines()
-                    for val in response:
-                        if len(val):
-                            device = val[:-1]
-                            break
-                    print("Device connected to port " +
-                          str(port) + " is: " + device)
-                    nr_data.append({
-                        "server": server,
-                        "line": tty,
-                        "port": port,
-                        "device": device,
-                        "last_tested": str(datetime.datetime.now()),
-                        "device_available": "true"
-                    })
-                else:
-                    print("Unhandled Response")
-            print("\n###########################")
+                out = conn.recv(20000)
+                print(out)
+            #     output = conn.recv(20000).decode('utf-8')
+            #     print(output)
+            #     if "user" in output.lower():
+            #         conn.send(ssh_username + "\n")
+            #         buffer = 5
+            #         while not conn.recv_ready() and buffer:
+            #             print("NOT READY - recv_ready: " +
+            #                   str(conn.recv_ready()) + "\n")
+            #             time.sleep(1)
+            #             buffer -= 1
+            #         response = conn.recv(20000).decode('utf-8')
+            #         print(response)
+            #         if "password" in response.lower():
+            #             conn.send(ssh_password + "\n")
+            #             buffer = 5
+            #             while not conn.recv_ready() and buffer:
+            #                 print("NOT READY - recv_ready: " +
+            #                       str(conn.recv_ready()) + "\n")
+            #                 time.sleep(1)
+            #                 buffer -= 1
+            #             response = conn.recv(20000).decode('utf-8')
+            #             print(response)
+            #             response = response.splitlines()
+            #             for val in response:
+            #                 if len(val):
+            #                     device = val[:-1]
+            #                     break
+            #             print("Device connected to port " +
+            #                   str(port) + " is: " + device)
+            #             nr_data.append({
+            #                 "server": server,
+            #                 "line": tty,
+            #                 "port": port,
+            #                 "device": device,
+            #                 "last_tested": str(datetime.datetime.now()),
+            #                 "device_available": "true"
+            #             })
+            #         else:
+            #             print("Unhandled Response")
+            #     elif "login" in output.lower():
+            #         response = output.splitlines()
+            #         for val in response:
+            #             if len(val):
+            #                 val = val.split()
+            #                 device = val[0]
+            #                 break
+            #         print("Device connected to port " +
+            #               str(port) + " is: " + device)
+            #         nr_data.append({
+            #             "server": server,
+            #             "line": tty,
+            #             "port": port,
+            #             "device": device,
+            #             "last_tested": str(datetime.datetime.now()),
+            #             "device_available": "true"
+            #         })
+            #     elif "#" in output.lower():
+            #         response = output.splitlines()
+            #         for val in response:
+            #             if len(val):
+            #                 device = val[:-1]
+            #                 break
+            #         print("Device connected to port " +
+            #               str(port) + " is: " + device)
+            #         nr_data.append({
+            #             "server": server,
+            #             "line": tty,
+            #             "port": port,
+            #             "device": device,
+            #             "last_tested": str(datetime.datetime.now()),
+            #             "device_available": "true"
+            #         })
+            #     elif "password" in output.lower():
+            #         conn.send(ssh_password + "\n")
+            #         buffer = 5
+            #         while not conn.recv_ready() and buffer:
+            #             print("NOT READY - recv_ready: " +
+            #                   str(conn.recv_ready()) + "\n")
+            #             time.sleep(1)
+            #             buffer -= 1
+            #         response = conn.recv(20000).decode('utf-8')
+            #         print(response)
+            #         response = response.splitlines()
+            #         for val in response:
+            #             if len(val):
+            #                 device = val[:-1]
+            #                 break
+            #         print("Device connected to port " +
+            #               str(port) + " is: " + device)
+            #         nr_data.append({
+            #             "server": server,
+            #             "line": tty,
+            #             "port": port,
+            #             "device": device,
+            #             "last_tested": str(datetime.datetime.now()),
+            #             "device_available": "true"
+            #         })
+            #     else:
+            #         print("Unhandled Response")
+            # print("\n###########################")
 
-    print("Data: " + str(nr_data))
-    # Update new relic metric information
-    update_terminal_server_access(nr_data)
-    print("New relic Metric information updated")
+    # print("Data: " + str(nr_data))
+    # # Update new relic metric information
+    # update_terminal_server_access(nr_data)
+    # print("New relic Metric information updated")
 
 except Exception as e:
     print("Something went wrong: " + str(e))
