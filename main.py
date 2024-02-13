@@ -36,6 +36,14 @@ try:
             except Exception as e:
                 print("Unable to connect: " + str(e))
                 print("\n###########################")
+                nr_data.append({
+                    "server": server,
+                    "line": tty,
+                    "port": port,
+                    "device": "",
+                    "last_tested": str(datetime.datetime.now()),
+                    "device_available": "false"
+                })
 
             if not connected:
                 continue
