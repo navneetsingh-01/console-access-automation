@@ -7,8 +7,30 @@ from dotenv import load_dotenv
 import datetime
 load_dotenv()
 
-ssh_username = os.getenv("SSH_USERNAME")
-ssh_password = os.getenv("SSH_PASSWORD")
+usernames = [os.getenv("TACACS_USERNAME"), os.getenv("NETADMIN_SU_USERNAME"), os.getenv("NETADMIN_USERNAME")]
+passwords = [os.getenv("TACACS_PASSWORD"), os.getenv("NETADMIN_SU_PASSWORD"), os.getenv("NETADMIN_PASSWORD")]
+
+ssh_client = paramiko.SSHClient()
+ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+def ssh_connect(server, port):
+    cred_idx = -1
+    for idx in range(0, len(usernames)):
+        ssh_username = usernames[idx]
+        ssh_password = passwords[idx]
+        try:
+            ssh_client.connect(
+                hostname=server, port=port, username=ssh_username, password=ssh_password, timeout=10)
+            cred_idx = idx
+            break
+        except Exception as e:
+            print("Unable to connect using: " + ssh_username)
+    if cred_idx == -1:
+        return {}
+    return {
+        "ssh_username": usernames[cred_idx], 
+        "ssh_password": passwords[cred_idx] 
+    }
 
 try:
     file = open(
@@ -25,28 +47,15 @@ try:
         for line in item["lines"]:
             port = 5000 + line["ROTY"]
             tty = line["TTY"]
-            ssh_client = paramiko.SSHClient()
-            ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            
             print("\nConecting to device on port " + str(port) + "\n")
-            connected = False
-            try:
-                ssh_client.connect(
-                    hostname=server, port=port, username=ssh_username, password=ssh_password, timeout=10)
-                connected = True
-            except Exception as e:
-                print("Unable to connect: " + str(e))
-                print("\n###########################")
-                nr_data.append({
-                    "server": server,
-                    "line": tty,
-                    "port": port,
-                    "device": "",
-                    "last_tested": str(datetime.datetime.now()),
-                    "device_available": "false"
-                })
-
-            if not connected:
+            
+            credentials = ssh_connect(server, port)
+            if not credentials:
                 continue
+
+            ssh_username = credentials["ssh_username"]
+            ssh_password = credentials["ssh_password"]
 
             # Invoke interactive shell on the jump device
             conn = ssh_client.invoke_shell()
