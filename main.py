@@ -59,14 +59,15 @@ def check_login(conn, idx, sitecode):
         response = conn.recv(20000).decode('utf-8')
         print(response)
         response = output.splitlines()
-        for line in response:
-            val = line.lower()
-            if '#' in val:
-                l = val.find(sitecode)
-                r = val.find('#')
-                device = line[l:r]
-                return device
-    
+        print(response)
+        # for line in response:
+        #     val = line.lower()
+        #     if '#' in val:
+        #         l = val.find(sitecode)
+        #         r = val.find('#')
+        #         device = line[l:r]
+        #         return device
+
     return -1
 
 
@@ -140,8 +141,6 @@ try:
                 try:
                     output = conn.recv(20000).decode('utf-8')
                     print("Printing output: " + output)
-                    val = output.splitlines()
-                    print(val)
                 except Exception as e:
                     print("Unable to decode the output: " + str(e))
                     decode = False
