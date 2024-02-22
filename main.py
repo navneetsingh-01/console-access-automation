@@ -31,7 +31,14 @@ def valid_hostname(device):
     return not device.isdigit()
 
 
-def check_login(conn, idx):
+def get_site_code(server):
+    r = server.find('-')
+    sitecode = server[0:r]
+    return sitecode
+
+
+def check_login(conn, idx, sitecode):
+    sitecode = sitecode.lower()
     conn.send(usernames[idx] + "\n")
     buffer = 5
     while not conn.recv_ready() and buffer:
@@ -52,8 +59,13 @@ def check_login(conn, idx):
         response = conn.recv(20000).decode('utf-8')
         print(response)
         response = output.splitlines()
-        for val in response:
-            print("VAL: " + val)
+        for line in response:
+            val = line.lower()
+            if '#' in val:
+                l = val.find(sitecode)
+                r = val.find('#')
+                device = line[l:r]
+                print("Intended: " + device)
 
 
 try:
@@ -67,6 +79,7 @@ try:
 
     for item in ts:
         server = item["name"]
+        sitecode = get_site_code(server)
         print("Checking terminal server access for: " + server)
         for line in item["lines"]:
             port = 5000 + line["ROTY"]
@@ -168,7 +181,7 @@ try:
                                   str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
-                                check_login(conn, 1)
+                                check_login(conn, 1, sitecode)
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -190,7 +203,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 1)
+                            check_login(conn, 1, sitecode)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -201,6 +214,13 @@ try:
                         })
                     elif "#" in output.lower():
                         response = output.splitlines()
+                        for line in response:
+                            val = line.lower()
+                            if '#' in val:
+                                l = val.find(sitecode)
+                                r = val.find('#')
+                                device = line[l:r]
+                                print("Normal: " + device)
                         for val in response:
                             if len(val):
                                 device = val[:-1]
@@ -209,7 +229,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 1)
+                            check_login(conn, 1, sitecode)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -237,7 +257,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 1)
+                            check_login(conn, 1, sitecode)
                         nr_data.append({
                             "server": server,
                             "line": tty,
