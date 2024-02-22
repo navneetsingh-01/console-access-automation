@@ -51,6 +51,9 @@ def check_login(conn, idx):
             buffer -= 1
         response = conn.recv(20000).decode('utf-8')
         print(response)
+        response = output.splitlines()
+        for val in response:
+            print("VAL: " + val)
 
 
 try:
@@ -163,7 +166,7 @@ try:
                                   str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
-                                check_login(conn, 2)
+                                check_login(conn, 1)
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -185,7 +188,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 2)
+                            check_login(conn, 1)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -204,7 +207,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 2)
+                            check_login(conn, 1)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -232,7 +235,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 2)
+                            check_login(conn, 1)
                         nr_data.append({
                             "server": server,
                             "line": tty,
