@@ -224,10 +224,10 @@ try:
                                 r = val.find('#')
                                 device = line[l:r]
                                 print("Normal: " + device)
-                        for val in response:
-                            if len(val):
-                                device = val[:-1]
-                                break
+                        # for val in response:
+                        #     if len(val):
+                        #         device = val[:-1]
+                        #         break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
