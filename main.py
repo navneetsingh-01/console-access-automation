@@ -181,7 +181,7 @@ try:
                                   str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
-                                dev = (conn, 2, sitecode)
+                                dev = check_login(conn, 2, sitecode)
                                 print(dev)
                             nr_data.append({
                                 "server": server,
@@ -204,7 +204,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            dev = (conn, 2, sitecode)
+                            dev = check_login(conn, 2, sitecode)
                             print(dev)
                                 
                         nr_data.append({
@@ -223,12 +223,12 @@ try:
                                 l = val.find(sitecode)
                                 r = val.find('#')
                                 device = line[l:r]
-                                print("Normal: " + device)
+                                break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            dev = (conn, 2, sitecode)
+                            dev = check_login(conn, 2, sitecode)
                             print(dev)
                         nr_data.append({
                             "server": server,
@@ -257,7 +257,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            dev = (conn, 2, sitecode)
+                            dev = check_login(conn, 2, sitecode)
                             print(dev)
                         nr_data.append({
                             "server": server,
