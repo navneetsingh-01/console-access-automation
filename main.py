@@ -321,6 +321,14 @@ try:
                                     break
                         if not done:
                             print("Unhandled Response")
+                            nr_data.append({
+                                "server": server,
+                                "line": tty,
+                                "port": port,
+                                "device": "",
+                                "last_tested": str(datetime.datetime.now()),
+                                "device_available": "false"
+                            })
                 print("\n###########################")
 
     print("Data: " + str(nr_data))
