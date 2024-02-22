@@ -47,8 +47,10 @@ try:
             ssh_username = usernames[0]
             ssh_password = passwords[0]
 
+            connected = False
             try:
                 ssh_connect(server, port, 0)
+                connected = True
             except Exception as e:
                 print("Unable to connect to " + server + " on " + str(port))
                 print("\n###########################")
@@ -60,6 +62,9 @@ try:
                     "last_tested": str(datetime.datetime.now()),
                     "device_available": "false"
                 })
+
+            if not connected:
+                continue
 
             # Invoke interactive shell on the jump device
             conn = ssh_client.invoke_shell()
