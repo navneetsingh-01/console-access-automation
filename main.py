@@ -107,8 +107,8 @@ try:
                         "device_available": "false"
                     })
                 if decode:
-                    ssh_username = usernames[1]
-                    ssh_password = passwords[1]
+                    ssh_username = usernames[2]
+                    ssh_password = passwords[2]
                     if "user" in output.lower():
                         conn.send(ssh_username + "\n")
                         buffer = 5
