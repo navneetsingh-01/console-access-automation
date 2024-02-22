@@ -59,6 +59,8 @@ try:
             if not credentials:
                 continue
 
+            print(str(credentials))
+
             ssh_username = credentials["ssh_username"]
             ssh_password = credentials["ssh_password"]
 
