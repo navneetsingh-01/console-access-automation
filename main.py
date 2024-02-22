@@ -70,6 +70,28 @@ def check_login(conn, idx, sitecode):
     return -1
 
 
+def found_device(line, sitecode):
+    sitecode = sitecode.lower()
+    line = line.lower()
+    l = line.find(sitecode)
+    if l == -1:
+        return ""
+    cnt = 0
+    j = l
+    i = l
+    while j < len(line):
+        if cnt < 2:
+            if line[j] == '-':
+                cnt += 1
+        else:
+            if not ((line[j] >= 'a' and line[j] <= 'z') or (line[j] >= '0' and line[j] <= '9')):
+                device = line[i:j]
+                return device
+        j += 1
+
+    return ""
+
+
 try:
     file = open(
         "/home/singhnavneet.su/console-access-automation/dc_list.json")
@@ -279,7 +301,26 @@ try:
                             "device_available": "true"
                         })
                     else:
-                        print("Unhandled Response")
+                        done = False
+                        response = output.splitlines()
+                        for line in response:
+                            if sitecode in line:
+                                device = found_device(line, sitecode)
+                                if device:
+                                    print("Device connected to port " +
+                                          str(port) + " is: " + device)
+                                    nr_data.append({
+                                        "server": server,
+                                        "line": tty,
+                                        "port": port,
+                                        "device": device,
+                                        "last_tested": str(datetime.datetime.now()),
+                                        "device_available": "true"
+                                    })
+                                    done = True
+                                    break
+                        if not done:
+                            print("Unhandled Response")
                 print("\n###########################")
 
     print("Data: " + str(nr_data))
