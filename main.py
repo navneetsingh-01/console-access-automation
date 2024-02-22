@@ -21,14 +21,13 @@ def ssh_connect(server, port):
     for idx in range(0, len(usernames)):
         ssh_username = usernames[idx]
         ssh_password = passwords[idx]
-        print(ssh_username, ssh_password)
         try:
             ssh_client.connect(
                 hostname=server, port=port, username=ssh_username, password=ssh_password, timeout=10)
             cred_idx = idx
             break
         except Exception as e:
-            print("Unable to connect using: ")
+            print("Unable to connect using: " + ssh_username)
 
     if cred_idx == -1:
         return {}
