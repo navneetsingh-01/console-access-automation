@@ -25,6 +25,8 @@ def ssh_connect(server, port):
             break
         except Exception as e:
             print("Unable to connect using: " + ssh_username)
+
+    print(cred_idx)
     if cred_idx == -1:
         return {}
     return {
