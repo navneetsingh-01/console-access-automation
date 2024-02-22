@@ -304,7 +304,7 @@ try:
                         done = False
                         response = output.splitlines()
                         for line in response:
-                            if sitecode in line:
+                            if sitecode.lower() in line.lower():
                                 device = found_device(line, sitecode)
                                 if device:
                                     print("Device connected to port " +
