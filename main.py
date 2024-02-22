@@ -65,7 +65,9 @@ def check_login(conn, idx, sitecode):
                 l = val.find(sitecode)
                 r = val.find('#')
                 device = line[l:r]
-                print("Intended: " + device)
+                return device
+    
+    return -1
 
 
 try:
@@ -181,7 +183,9 @@ try:
                                   str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
-                                check_login(conn, 1, sitecode)
+                                device = check_login(conn, 1, sitecode)
+                                if device == -1:
+                                    device = check_login(conn, 2, sitecode)
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -203,7 +207,9 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 1, sitecode)
+                            device = check_login(conn, 1, sitecode)
+                            if device == -1:
+                                device = check_login(conn, 2, sitecode)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -229,7 +235,9 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 1, sitecode)
+                            device = check_login(conn, 1, sitecode)
+                            if device == -1:
+                                device = check_login(conn, 2, sitecode)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -257,7 +265,9 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            check_login(conn, 1, sitecode)
+                            device = check_login(conn, 1, sitecode)
+                            if device == -1:
+                                device = check_login(conn, 2, sitecode)
                         nr_data.append({
                             "server": server,
                             "line": tty,
