@@ -124,7 +124,9 @@ try:
                 decode = True
                 try:
                     output = conn.recv(20000).decode('utf-8')
-                    print(output)
+                    print("Printing output: " + output)
+                    val = output.splitlines()
+                    print(val)
                 except Exception as e:
                     print("Unable to decode the output: " + str(e))
                     decode = False
