@@ -26,6 +26,11 @@ def ssh_connect(server, port, idx):
         print("Unable to connect to " + server + " on " + port)
 
 
+def valid_hostname(device):
+    device = device.replace('-', '')
+    return not device.isdigit()
+
+
 try:
     file = open(
         "/home/singhnavneet.su/console-access-automation/dc_list.json")
@@ -107,8 +112,6 @@ try:
                         "device_available": "false"
                     })
                 if decode:
-                    ssh_username = usernames[2]
-                    ssh_password = passwords[2]
                     if "user" in output.lower():
                         conn.send(ssh_username + "\n")
                         buffer = 5
@@ -136,6 +139,8 @@ try:
                                     break
                             print("Device connected to port " +
                                   str(port) + " is: " + device)
+                            if not valid_hostname(device):
+                                print("Test different credentials")
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -155,6 +160,8 @@ try:
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
+                        if not valid_hostname(device):
+                            print("Test different credentials")
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -171,6 +178,8 @@ try:
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
+                        if not valid_hostname(device):
+                            print("Test different credentials")
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -196,6 +205,8 @@ try:
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
+                        if not valid_hostname(device):
+                            print("Test different credentials")
                         nr_data.append({
                             "server": server,
                             "line": tty,
