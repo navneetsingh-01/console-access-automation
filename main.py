@@ -183,9 +183,8 @@ try:
                                   str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
-                                device = check_login(conn, 1, sitecode)
-                                if device == -1:
-                                    device = check_login(conn, 2, sitecode)
+                                dev = (conn, 2, sitecode)
+                                print(dev)
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -207,9 +206,8 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            device = check_login(conn, 1, sitecode)
-                            if device == -1:
-                                device = check_login(conn, 2, sitecode)
+                            dev = (conn, 2, sitecode)
+                            print(dev)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -235,9 +233,8 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            device = check_login(conn, 1, sitecode)
-                            if device == -1:
-                                device = check_login(conn, 2, sitecode)
+                            dev = (conn, 2, sitecode)
+                            print(dev)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -265,9 +262,8 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            device = check_login(conn, 1, sitecode)
-                            if device == -1:
-                                device = check_login(conn, 2, sitecode)
+                            dev = (conn, 2, sitecode)
+                            print(dev)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -286,4 +282,4 @@ try:
     # print("New relic Metric information updated")
 
 except Exception as e:
-    print("Something went wrong: " + str(e))
+    print("Something went wrong: " + str(e))e
