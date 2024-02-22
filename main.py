@@ -76,6 +76,9 @@ try:
                 time.sleep(1)
                 buffer_timeout -= 1
 
+            output = conn.recv(20000).decode('utf-8')
+            print(output)
+
             # # If timeout, means unable to connect to this terminal console server on the corresponding line
             # if not buffer_timeout:
             #     print("Unable to access device on port " + str(port))
