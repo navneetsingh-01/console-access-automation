@@ -50,7 +50,7 @@ try:
             try:
                 ssh_connect(server, port, 0)
             except Exception as e:
-                print("Unable to connect to " + server + " on " + port)
+                print("Unable to connect to " + server + " on " + str(port))
                 print("\n###########################")
                 nr_data.append({
                     "server": server,
