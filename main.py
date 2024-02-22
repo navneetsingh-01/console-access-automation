@@ -282,4 +282,4 @@ try:
     # print("New relic Metric information updated")
 
 except Exception as e:
-    print("Something went wrong: " + str(e))e
+    print("Something went wrong: " + str(e))
