@@ -71,9 +71,7 @@ def check_login(conn, idx, sitecode):
 
 
 def found_device(line, sitecode):
-    sitecode = sitecode.lower()
-    line = line.lower()
-    l = line.find(sitecode)
+    l = line.lower().find(sitecode.lower())
     if l == -1:
         return ""
     cnt = 0
