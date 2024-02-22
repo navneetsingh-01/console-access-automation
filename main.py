@@ -151,7 +151,7 @@ try:
                                 response = conn.recv(20000).decode('utf-8')
                                 print(response)
                                 if "password" in response.lower():
-                                    conn.send(passwords[1] + "\n\n\n")
+                                    conn.send(passwords[1] + "\n\n\n\n")
                                     buffer = 5
                                     while not conn.recv_ready() and buffer:
                                         print("NOT READY - recv_ready: " +
@@ -191,7 +191,7 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             if "password" in response.lower():
-                                conn.send(passwords[1] + "\n\n\n")
+                                conn.send(passwords[1] + "\n\n\n\n")
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
@@ -228,7 +228,7 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             if "password" in response.lower():
-                                conn.send(passwords[1] + "\n\n\n")
+                                conn.send(passwords[1] + "\n\n\n\n")
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
@@ -274,7 +274,7 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             if "password" in response.lower():
-                                conn.send(passwords[1] + "\n\n\n")
+                                conn.send(passwords[1] + "\n\n\n\n")
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
