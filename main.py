@@ -205,8 +205,27 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            dev = (conn, 2, sitecode)
-                            print(dev)
+                            conn.send(usernames[2] + "\n")
+                            buffer = 5
+                            while not conn.recv_ready() and buffer:
+                                print("NOT READY - recv_ready: " +
+                                    str(conn.recv_ready()) + "\n")
+                                time.sleep(1)
+                                buffer -= 1
+                            response = conn.recv(20000).decode('utf-8')
+                            print(response)
+                            if "password" in response.lower():
+                                conn.send(passwords[2] + "\n")
+                                buffer = 5
+                                while not conn.recv_ready() and buffer:
+                                    print("NOT READY - recv_ready: " +
+                                        str(conn.recv_ready()) + "\n")
+                                    time.sleep(1)
+                                    buffer -= 1
+                                response = conn.recv(20000).decode('utf-8')
+                                print(response)
+                                response = output.splitlines()
+                                print(response)
                         nr_data.append({
                             "server": server,
                             "line": tty,
