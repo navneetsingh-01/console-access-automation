@@ -31,6 +31,28 @@ def valid_hostname(device):
     return not device.isdigit()
 
 
+def check_login(conn, idx):
+    conn.send(usernames[idx] + "\n")
+    buffer = 5
+    while not conn.recv_ready() and buffer:
+        print("NOT READY - recv_ready: " +
+              str(conn.recv_ready()) + "\n")
+        time.sleep(1)
+        buffer -= 1
+    response = conn.recv(20000).decode('utf-8')
+    print(response)
+    if "password" in response.lower():
+        conn.send(passwords[idx] + "\n")
+        buffer = 5
+        while not conn.recv_ready() and buffer:
+            print("NOT READY - recv_ready: " +
+                  str(conn.recv_ready()) + "\n")
+            time.sleep(1)
+            buffer -= 1
+        response = conn.recv(20000).decode('utf-8')
+        print(response)
+
+
 try:
     file = open(
         "/home/singhnavneet.su/console-access-automation/dc_list.json")
@@ -141,25 +163,7 @@ try:
                                   str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
-                                conn.send(usernames[2] + "\n")
-                                buffer = 5
-                                while not conn.recv_ready() and buffer:
-                                    print("NOT READY - recv_ready: " +
-                                        str(conn.recv_ready()) + "\n")
-                                    time.sleep(1)
-                                    buffer -= 1
-                                response = conn.recv(20000).decode('utf-8')
-                                print(response)
-                                if "password" in response.lower():
-                                    conn.send(passwords[2] + "\n\n\n\n")
-                                    buffer = 5
-                                    while not conn.recv_ready() and buffer:
-                                        print("NOT READY - recv_ready: " +
-                                            str(conn.recv_ready()) + "\n")
-                                        time.sleep(1)
-                                        buffer -= 1
-                                    response = conn.recv(20000).decode('utf-8')
-                                    print(response)
+                                check_login(conn, 2)
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -181,25 +185,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            conn.send(usernames[2] + "\n")
-                            buffer = 5
-                            while not conn.recv_ready() and buffer:
-                                print("NOT READY - recv_ready: " +
-                                    str(conn.recv_ready()) + "\n")
-                                time.sleep(1)
-                                buffer -= 1
-                            response = conn.recv(20000).decode('utf-8')
-                            print(response)
-                            if "password" in response.lower():
-                                conn.send(passwords[2] + "\n\n\n\n")
-                                buffer = 5
-                                while not conn.recv_ready() and buffer:
-                                    print("NOT READY - recv_ready: " +
-                                        str(conn.recv_ready()) + "\n")
-                                    time.sleep(1)
-                                    buffer -= 1
-                                response = conn.recv(20000).decode('utf-8')
-                                print(response)
+                            check_login(conn, 2)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -218,25 +204,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            conn.send(usernames[2] + "\n")
-                            buffer = 5
-                            while not conn.recv_ready() and buffer:
-                                print("NOT READY - recv_ready: " +
-                                    str(conn.recv_ready()) + "\n")
-                                time.sleep(1)
-                                buffer -= 1
-                            response = conn.recv(20000).decode('utf-8')
-                            print(response)
-                            if "password" in response.lower():
-                                conn.send(passwords[2] + "\n\n\n\n")
-                                buffer = 5
-                                while not conn.recv_ready() and buffer:
-                                    print("NOT READY - recv_ready: " +
-                                        str(conn.recv_ready()) + "\n")
-                                    time.sleep(1)
-                                    buffer -= 1
-                                response = conn.recv(20000).decode('utf-8')
-                                print(response)
+                            check_login(conn, 2)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -264,25 +232,7 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            conn.send(usernames[2] + "\n")
-                            buffer = 5
-                            while not conn.recv_ready() and buffer:
-                                print("NOT READY - recv_ready: " +
-                                    str(conn.recv_ready()) + "\n")
-                                time.sleep(1)
-                                buffer -= 1
-                            response = conn.recv(20000).decode('utf-8')
-                            print(response)
-                            if "password" in response.lower():
-                                conn.send(passwords[2] + "\n\n\n\n")
-                                buffer = 5
-                                while not conn.recv_ready() and buffer:
-                                    print("NOT READY - recv_ready: " +
-                                        str(conn.recv_ready()) + "\n")
-                                    time.sleep(1)
-                                    buffer -= 1
-                                response = conn.recv(20000).decode('utf-8')
-                                print(response)
+                            check_login(conn, 2)
                         nr_data.append({
                             "server": server,
                             "line": tty,
