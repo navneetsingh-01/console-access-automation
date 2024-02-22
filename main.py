@@ -71,18 +71,20 @@ def check_login(conn, idx, sitecode):
 
 
 def found_device(line, sitecode):
-    l = line.lower().find(sitecode.lower())
+    t_line = line.lower()
+    t_sitecode = sitecode.lower()
+    l = t_line.find(t_sitecode)
     if l == -1:
         return ""
     cnt = 0
     j = l
     i = l
-    while j < len(line):
+    while j < len(t_line):
         if cnt < 2:
-            if line[j] == '-':
+            if t_line[j] == '-':
                 cnt += 1
         else:
-            if not ((line[j] >= 'a' and line[j] <= 'z') or (line[j] >= '0' and line[j] <= '9')):
+            if not ((t_line[j] >= 'a' and t_line[j] <= 'z') or (t_line[j] >= '0' and t_line[j] <= '9')):
                 device = line[i:j]
                 return device
         j += 1
