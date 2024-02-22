@@ -139,7 +139,7 @@ try:
                 decode = True
                 try:
                     output = conn.recv(20000).decode('utf-8')
-                    print("Printing output: " + output)
+                    print(output)
                 except Exception as e:
                     print("Unable to decode the output: " + str(e))
                     decode = False
@@ -182,7 +182,10 @@ try:
                             if not valid_hostname(device):
                                 print("Test different credentials")
                                 dev = check_login(conn, 2, sitecode)
-                                print(dev)
+                                if dev != -1:
+                                    device = dev
+                                    print("Device connected to port " +
+                                          str(port) + " is: " + device)
                             nr_data.append({
                                 "server": server,
                                 "line": tty,
@@ -205,8 +208,10 @@ try:
                         if not valid_hostname(device):
                             print("Test different credentials")
                             dev = check_login(conn, 2, sitecode)
-                            print(dev)
-                                
+                            if dev != -1:
+                                device = dev
+                                print("Device connected to port " +
+                                      str(port) + " is: " + device)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -229,7 +234,10 @@ try:
                         if not valid_hostname(device):
                             print("Test different credentials")
                             dev = check_login(conn, 2, sitecode)
-                            print(dev)
+                            if dev != -1:
+                                device = dev
+                                print("Device connected to port " +
+                                      str(port) + " is: " + device)
                         nr_data.append({
                             "server": server,
                             "line": tty,
@@ -258,7 +266,10 @@ try:
                         if not valid_hostname(device):
                             print("Test different credentials")
                             dev = check_login(conn, 2, sitecode)
-                            print(dev)
+                            if dev != -1:
+                                device = dev
+                                print("Device connected to port " +
+                                      str(port) + " is: " + device)
                         nr_data.append({
                             "server": server,
                             "line": tty,
