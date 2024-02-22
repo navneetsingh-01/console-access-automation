@@ -7,32 +7,36 @@ from dotenv import load_dotenv
 import datetime
 load_dotenv()
 
-usernames = [os.getenv("TACACS_USERNAME"), os.getenv("NETADMIN_SU_USERNAME"), os.getenv("NETADMIN_USERNAME")]
-passwords = [os.getenv("TACACS_PASSWORD"), os.getenv("NETADMIN_SU_PASSWORD"), os.getenv("NETADMIN_PASSWORD")]
+usernames = [os.getenv("TACACS_USERNAME"), os.getenv(
+    "NETADMIN_SU_USERNAME"), os.getenv("NETADMIN_USERNAME")]
+passwords = [os.getenv("TACACS_PASSWORD"), os.getenv(
+    "NETADMIN_SU_PASSWORD"), os.getenv("NETADMIN_PASSWORD")]
 
 ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
 
 def ssh_connect(server, port):
     cred_idx = -1
     for idx in range(0, len(usernames)):
         ssh_username = usernames[idx]
         ssh_password = passwords[idx]
+        print(ssh_username, ssh_password)
         try:
             ssh_client.connect(
                 hostname=server, port=port, username=ssh_username, password=ssh_password, timeout=10)
             cred_idx = idx
             break
         except Exception as e:
-            print("Unable to connect using: " + ssh_username)
+            print("Unable to connect using: ")
 
-    print(cred_idx)
     if cred_idx == -1:
         return {}
     return {
-        "ssh_username": usernames[cred_idx], 
-        "ssh_password": passwords[cred_idx] 
+        "ssh_username": usernames[cred_idx],
+        "ssh_password": passwords[cred_idx]
     }
+
 
 try:
     file = open(
@@ -49,14 +53,12 @@ try:
         for line in item["lines"]:
             port = 5000 + line["ROTY"]
             tty = line["TTY"]
-            
+
             print("\nConecting to device on port " + str(port) + "\n")
-            
+
             credentials = ssh_connect(server, port)
             if not credentials:
                 continue
-
-            print(str(credentials))
 
             ssh_username = credentials["ssh_username"]
             ssh_password = credentials["ssh_password"]
@@ -72,8 +74,6 @@ try:
                       str(conn.recv_ready()) + "\n")
                 time.sleep(1)
                 buffer_timeout -= 1
-
-
 
             # # If timeout, means unable to connect to this terminal console server on the corresponding line
             # if not buffer_timeout:
