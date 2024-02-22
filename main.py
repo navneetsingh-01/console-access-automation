@@ -58,15 +58,14 @@ def check_login(conn, idx, sitecode):
             buffer -= 1
         response = conn.recv(20000).decode('utf-8')
         print(response)
-        response = output.splitlines()
-        print(response)
-        # for line in response:
-        #     val = line.lower()
-        #     if '#' in val:
-        #         l = val.find(sitecode)
-        #         r = val.find('#')
-        #         device = line[l:r]
-        #         return device
+        response = response.splitlines()
+        for line in response:
+            val = line.lower()
+            if '#' in val:
+                l = val.find(sitecode)
+                r = val.find('#')
+                device = line[l:r]
+                return device
 
     return -1
 
@@ -205,27 +204,9 @@ try:
                               str(port) + " is: " + device)
                         if not valid_hostname(device):
                             print("Test different credentials")
-                            conn.send(usernames[2] + "\n")
-                            buffer = 5
-                            while not conn.recv_ready() and buffer:
-                                print("NOT READY - recv_ready: " +
-                                    str(conn.recv_ready()) + "\n")
-                                time.sleep(1)
-                                buffer -= 1
-                            response = conn.recv(20000).decode('utf-8')
-                            print(response)
-                            if "password" in response.lower():
-                                conn.send(passwords[2] + "\n")
-                                buffer = 5
-                                while not conn.recv_ready() and buffer:
-                                    print("NOT READY - recv_ready: " +
-                                        str(conn.recv_ready()) + "\n")
-                                    time.sleep(1)
-                                    buffer -= 1
-                                response = conn.recv(20000).decode('utf-8')
-                                print(response)
-                                response = output.splitlines()
-                                print(response)
+                            dev = (conn, 2, sitecode)
+                            print(dev)
+                                
                         nr_data.append({
                             "server": server,
                             "line": tty,
