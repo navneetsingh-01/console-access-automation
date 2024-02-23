@@ -23,6 +23,7 @@ def ssh_connect(server, port, idx):
         ssh_client.connect(
             hostname=server, port=port, username=ssh_username, password=ssh_password, timeout=10)
     except Exception as e:
+        print(str(e))
         print("Unable to connect to " + server + " on " + port)
 
 
