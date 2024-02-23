@@ -195,27 +195,26 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             response = response.splitlines()
-                            for val in response:
-                                if len(val):
-                                    device = val[:-1]
-                                    break
-                            print("Device connected to port " +
-                                  str(port) + " is: " + device)
-                            if not valid_hostname(device):
-                                print("Test different credentials")
-                                dev = check_login(conn, 2, sitecode)
-                                if dev != -1:
-                                    device = dev
+                            for line in response:
+                                device = found_device(line, sitecode)
+                                if device:
                                     print("Device connected to port " +
                                           str(port) + " is: " + device)
-                            nr_data.append({
-                                "server": server,
-                                "line": tty,
-                                "port": port,
-                                "device": device,
-                                "last_tested": str(datetime.datetime.now()),
-                                "device_available": "true"
-                            })
+                                if not valid_hostname(device):
+                                    print("Test different credentials")
+                                    dev = check_login(conn, 2, sitecode)
+                                    if dev != -1:
+                                        device = dev
+                                        print("Device connected to port " +
+                                            str(port) + " is: " + device)
+                                nr_data.append({
+                                    "server": server,
+                                    "line": tty,
+                                    "port": port,
+                                    "device": device,
+                                    "last_tested": str(datetime.datetime.now()),
+                                    "device_available": "true"
+                                })
                         else:
                             print("Unhandled Response")
                     elif "login" in output.lower():
