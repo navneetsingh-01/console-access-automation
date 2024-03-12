@@ -92,32 +92,6 @@ def found_device(line, sitecode):
 
     return ""
 
-
-def final_check(output):
-    if "user" in output.lower():
-        conn.send(ssh_username + "\n")
-        buffer = 5
-        while not conn.recv_ready() and buffer:
-            print("NOT READY - recv_ready: " +
-                  str(conn.recv_ready()) + "\n")
-            time.sleep(1)
-            buffer -= 1
-        response = conn.recv(20000).decode('utf-8')
-        print(response)
-        if "password" in response.lower():
-            conn.send(ssh_password + "\n")
-            buffer = 5
-            while not conn.recv_ready() and buffer:
-                print("NOT READY - recv_ready: " +
-                      str(conn.recv_ready()) + "\n")
-                time.sleep(1)
-                buffer -= 1
-            response = conn.recv(20000).decode('utf-8')
-            return response
-    else:
-        return output
-
-
 try:
     file = open(
         "/home/singhnavneet.su/console-access-automation/dc_list.json")
@@ -219,7 +193,6 @@ try:
                                 time.sleep(1)
                                 buffer -= 1
                             response = conn.recv(20000).decode('utf-8')
-                            response = final_check(response)
                             print(response)
                             response = response.splitlines()
                             for line in response:
