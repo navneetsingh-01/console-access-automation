@@ -233,7 +233,7 @@ try:
                             buffer = 5
                             while not conn.recv_ready() and buffer:
                                 print("NOT READY - recv_ready: " +
-                                    str(conn.recv_ready()) + "\n")
+                                      str(conn.recv_ready()) + "\n")
                                 time.sleep(1)
                                 buffer -= 1
                             response = conn.recv(20000).decode('utf-8')
@@ -243,7 +243,7 @@ try:
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
-                                        str(conn.recv_ready()) + "\n")
+                                          str(conn.recv_ready()) + "\n")
                                     time.sleep(1)
                                     buffer -= 1
                                 response = conn.recv(20000).decode('utf-8')
@@ -254,7 +254,7 @@ try:
                                     connection = "false"
                                     if device:
                                         print("Device connected to port " +
-                                            str(port) + " is: " + device)
+                                              str(port) + " is: " + device)
                                         connection = "true"
                                     if not valid_hostname(device):
                                         print("Test different credentials")
@@ -262,7 +262,7 @@ try:
                                         if dev != -1:
                                             device = dev
                                             print("Device connected to port " +
-                                                str(port) + " is: " + device)
+                                                  str(port) + " is: " + device)
                                             connection = 'true'
                                     nr_data.append({
                                         "server": server,
@@ -276,14 +276,14 @@ try:
                                 print("Unhandled Response")
                         else:
                             print("Device connected to port " +
-                                        str(port) + " is: " + device)
+                                  str(port) + " is: " + device)
                             if not valid_hostname(device):
                                 print("Test different credentials")
                                 dev = check_login(conn, 2, sitecode)
                                 if dev != -1:
                                     device = dev
                                     print("Device connected to port " +
-                                            str(port) + " is: " + device)
+                                          str(port) + " is: " + device)
                                     connection = 'true'
                             nr_data.append({
                                 "server": server,
@@ -353,6 +353,52 @@ try:
                             "last_tested": str(datetime.datetime.now()),
                             "device_available": "true"
                         })
+                    elif 'switch' in output.lower():
+                        conn.send(ssh_username + "\n")
+                        buffer = 5
+                        while not conn.recv_ready() and buffer:
+                            print("NOT READY - recv_ready: " +
+                                  str(conn.recv_ready()) + "\n")
+                            time.sleep(1)
+                            buffer -= 1
+                        response = conn.recv(20000).decode('utf-8')
+                        print(response)
+                        if "password" in response.lower():
+                            conn.send(ssh_password + "\n")
+                            buffer = 5
+                            while not conn.recv_ready() and buffer:
+                                print("NOT READY - recv_ready: " +
+                                      str(conn.recv_ready()) + "\n")
+                                time.sleep(1)
+                                buffer -= 1
+                            response = conn.recv(20000).decode('utf-8')
+                            print(response)
+                            response = response.splitlines()
+                            for line in response:
+                                device = found_device(line, sitecode)
+                                connection = "false"
+                                if device:
+                                    print("Device connected to port " +
+                                          str(port) + " is: " + device)
+                                    connection = "true"
+                                if not valid_hostname(device):
+                                    print("Test different credentials")
+                                    dev = check_login(conn, 2, sitecode)
+                                    if dev != -1:
+                                        device = dev
+                                        print("Device connected to port " +
+                                              str(port) + " is: " + device)
+                                        connection = 'true'
+                                nr_data.append({
+                                    "server": server,
+                                    "line": tty,
+                                    "port": port,
+                                    "device": device,
+                                    "last_tested": str(datetime.datetime.now()),
+                                    "device_available": connection
+                                })
+                        else:
+                            print("Unhandled Response")
                     else:
                         done = False
                         response = output.splitlines()
@@ -395,6 +441,3 @@ except Exception as e:
 finally:
     if ssh_client:
         ssh_client.close()
-
-
-  
