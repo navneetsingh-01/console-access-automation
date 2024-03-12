@@ -197,6 +197,7 @@ try:
                             response = response.splitlines()
                             for line in response:
                                 device = found_device(line, sitecode)
+                                print("DEVICE: ", device)
                                 if device:
                                     print("Device connected to port " +
                                           str(port) + " is: " + device)
