@@ -92,6 +92,7 @@ def found_device(line, sitecode):
 
     return ""
 
+
 try:
     file = open(
         "/home/singhnavneet.su/console-access-automation/dc_list.json")
@@ -197,10 +198,11 @@ try:
                             response = response.splitlines()
                             for line in response:
                                 device = found_device(line, sitecode)
-                                print("DEVICE: ", device)
+                                connection = "false"
                                 if device:
                                     print("Device connected to port " +
                                           str(port) + " is: " + device)
+                                    connection = "true"
                                 if not valid_hostname(device):
                                     print("Test different credentials")
                                     dev = check_login(conn, 2, sitecode)
@@ -214,7 +216,7 @@ try:
                                     "port": port,
                                     "device": device,
                                     "last_tested": str(datetime.datetime.now()),
-                                    "device_available": "true"
+                                    "device_available": connection
                                 })
                         else:
                             print("Unhandled Response")
