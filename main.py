@@ -75,9 +75,9 @@ def found_device(line, sitecode):
     t_line = line.lower()
     t_sitecode = sitecode.lower()
     l = t_line.find(t_sitecode)
-    print(t_line)
-    print(t_sitecode)
-    print(l)
+    # print(t_line)
+    # print(t_sitecode)
+    # print(l)
     if l == -1:
         return ""
     cnt = 0
@@ -178,26 +178,7 @@ try:
                         "device_available": "false"
                     })
                 if decode:
-                    done = False
-                    for line in output.splitlines():
-                        if sitecode.lower() in line.lower():
-                            device = found_device(line, sitecode)
-                            if device:
-                                print("Device connected to port " +
-                                      str(port) + " is: " + device)
-                                nr_data.append({
-                                    "server": server,
-                                    "line": tty,
-                                    "port": port,
-                                    "device": device,
-                                    "last_tested": str(datetime.datetime.now()),
-                                    "device_available": "true"
-                                })
-                                done = True
-                                break
-                    if done:
-                        pass
-                    elif "user" in output.lower():
+                    if "user" in output.lower() and sitecode.lower() not in output.lower():
                         conn.send(ssh_username + "\n")
                         buffer = 5
                         while not conn.recv_ready() and buffer:
