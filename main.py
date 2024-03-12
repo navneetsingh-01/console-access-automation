@@ -75,9 +75,9 @@ def found_device(line, sitecode):
     t_line = line.lower()
     t_sitecode = sitecode.lower()
     l = t_line.find(t_sitecode)
-    # print(t_line)
-    # print(t_sitecode)
-    # print(l)
+    print("ASD", t_line)
+    print("asd", t_sitecode)
+    print(l)
     if l == -1:
         return ""
     cnt = 0
