@@ -75,9 +75,6 @@ def found_device(line, sitecode):
     t_line = line.lower()
     t_sitecode = sitecode.lower()
     l = t_line.find(t_sitecode)
-    print("ASD", t_line)
-    print("asd", t_sitecode)
-    print(l)
     if l == -1:
         return ""
     cnt = 0
@@ -232,7 +229,7 @@ try:
                                 device = val[0]
                                 break
                         if 'login' in device.lower():
-                            conn.send(ssh_username + "\n")
+                            conn.send(usernames[2] + "\n")
                             buffer = 5
                             while not conn.recv_ready() and buffer:
                                 print("NOT READY - recv_ready: " +
@@ -242,7 +239,7 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             if "password" in response.lower():
-                                conn.send(ssh_password + "\n")
+                                conn.send(passwords[2] + "\n")
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
