@@ -175,7 +175,26 @@ try:
                         "device_available": "false"
                     })
                 if decode:
-                    if "user" in output.lower():
+                    done = False
+                    for line in output.splitlines():
+                        if sitecode.lower() in line.lower():
+                            device = found_device(line, sitecode)
+                            if device:
+                                print("Device connected to port " +
+                                      str(port) + " is: " + device)
+                                nr_data.append({
+                                    "server": server,
+                                    "line": tty,
+                                    "port": port,
+                                    "device": device,
+                                    "last_tested": str(datetime.datetime.now()),
+                                    "device_available": "true"
+                                })
+                                done = True
+                                break
+                    if done:
+                        pass
+                    elif "user" in output.lower():
                         conn.send(ssh_username + "\n")
                         buffer = 5
                         while not conn.recv_ready() and buffer:
@@ -210,6 +229,7 @@ try:
                                         device = dev
                                         print("Device connected to port " +
                                               str(port) + " is: " + device)
+                                        connection = 'true'
                                 nr_data.append({
                                     "server": server,
                                     "line": tty,
@@ -222,28 +242,29 @@ try:
                             print("Unhandled Response")
                     elif "login" in output.lower():
                         response = output.splitlines()
-                        for val in response:
-                            if len(val):
-                                val = val.split()
-                                device = val[0]
-                                break
-                        print("Device connected to port " +
-                              str(port) + " is: " + device)
-                        if not valid_hostname(device):
-                            print("Test different credentials")
-                            dev = check_login(conn, 2, sitecode)
-                            if dev != -1:
-                                device = dev
+                        for line in response:
+                            device = found_device(line, sitecode)
+                            connection = 'false'
+                            if device:
                                 print("Device connected to port " +
                                       str(port) + " is: " + device)
-                        nr_data.append({
-                            "server": server,
-                            "line": tty,
-                            "port": port,
-                            "device": device,
-                            "last_tested": str(datetime.datetime.now()),
-                            "device_available": "true"
-                        })
+                                connection = 'true'
+                            if not valid_hostname(device):
+                                print("Test different credentials")
+                                dev = check_login(conn, 2, sitecode)
+                                if dev != -1:
+                                    device = dev
+                                    print("Device connected to port " +
+                                          str(port) + " is: " + device)
+                                    connection = 'true'
+                            nr_data.append({
+                                "server": server,
+                                "line": tty,
+                                "port": port,
+                                "device": device,
+                                "last_tested": str(datetime.datetime.now()),
+                                "device_available": connection
+                            })
                     elif "#" in output.lower():
                         response = output.splitlines()
                         for line in response:
