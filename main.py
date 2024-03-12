@@ -229,7 +229,7 @@ try:
                                 device = val[0]
                                 break
                         if 'login' in device.lower():
-                            conn.send(usernames[2] + "\n")
+                            conn.send(ssh_username + "\n")
                             buffer = 5
                             while not conn.recv_ready() and buffer:
                                 print("NOT READY - recv_ready: " +
@@ -239,7 +239,7 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             if "password" in response.lower():
-                                conn.send(passwords[2] + "\n")
+                                conn.send(ssh_password + "\n")
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
