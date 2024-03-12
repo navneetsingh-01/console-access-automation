@@ -256,7 +256,9 @@ try:
                             if '#' in val:
                                 l = val.find(sitecode)
                                 r = val.find('#')
-                                device = line[l:r]
+                                while l >= 0 and ((val[l] >= 'a' and val[l] <= 'z') or val[l] == '-'):
+                                    l -= 1
+                                device = line[l+1:r]
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
