@@ -161,7 +161,7 @@ try:
             else:
                 decode = True
                 try:
-                    time.sleep(5)
+                    time.sleep(10)
                     output = conn.recv(20000).decode('utf-8')
                     print(output)
                 except Exception as e:
