@@ -161,8 +161,7 @@ try:
             else:
                 decode = True
                 try:
-                    output = conn.recv(20000).decode('utf-8')
-                    output = conn.recv(20000).decode('utf-8')
+                    time.sleep(5)
                     output = conn.recv(20000).decode('utf-8')
                     print(output)
                 except Exception as e:
@@ -357,7 +356,7 @@ try:
                         })
                     elif 'switch:' in output.lower():
                         print("Device connected to port " +
-                              str(port) + " is: " + device)
+                              str(port) + " is: switch")
                         nr_data.append({
                             "server": server,
                             "line": tty,
