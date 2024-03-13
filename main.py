@@ -354,6 +354,8 @@ try:
                             "device_available": "true"
                         })
                     elif 'switch:' in output.lower():
+                        print("Device connected to port " +
+                              str(port) + " is: " + device)
                         nr_data.append({
                             "server": server,
                             "line": tty,
