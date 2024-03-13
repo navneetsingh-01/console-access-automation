@@ -162,6 +162,8 @@ try:
                 decode = True
                 try:
                     output = conn.recv(20000).decode('utf-8')
+                    output = conn.recv(20000).decode('utf-8')
+                    output = conn.recv(20000).decode('utf-8')
                     print(output)
                 except Exception as e:
                     print("Unable to decode the output: " + str(e))
