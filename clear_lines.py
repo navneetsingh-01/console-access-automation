@@ -41,6 +41,8 @@ try:
         print(stdin)
         print(stderr)
         print("Output: ", stdout)
+        if ssh_client:
+            ssh_client.close()
 except Exception as e:
 
     print("Something went wrong: " + str(e))
