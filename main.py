@@ -95,7 +95,7 @@ def found_device(line, sitecode):
 
 try:
     file = open(
-        "/home/singhnavneet.su/console-access-automation/dc_list.json")
+        "/home/singhnavneet.su/console-access-automation/dc_list_complete.json")
     data = json.load(file)
 
     ts = data["ts"]
@@ -398,8 +398,8 @@ try:
 
     print("Data: " + str(nr_data))
     # Update new relic metric information
-    # update_terminal_server_access(nr_data)
-    # print("New relic Metric information updated")
+    update_terminal_server_access(nr_data)
+    print("New relic Metric information updated")
 
 except Exception as e:
     print("Something went wrong: " + str(e))
