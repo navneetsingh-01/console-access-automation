@@ -12,11 +12,8 @@ usernames = [os.getenv("TACACS_USERNAME"), os.getenv(
 passwords = [os.getenv("TACACS_PASSWORD"), os.getenv(
     "NETADMIN_SU_PASSWORD"), os.getenv("NETADMIN_PASSWORD")]
 
-ssh_client = paramiko.SSHClient()
-ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-
-def ssh_connect(server, port, idx):
+def ssh_connect(server, port, idx, ssh_client):
     ssh_username = usernames[idx]
     ssh_password = passwords[idx]
     try:
@@ -117,7 +114,10 @@ try:
 
             connected = False
             try:
-                ssh_connect(server, port, 0)
+                ssh_client = paramiko.SSHClient()
+                ssh_client.set_missing_host_key_policy(
+                    paramiko.AutoAddPolicy())
+                ssh_connect(server, port, 0, ssh_client)
                 connected = True
             except Exception as e:
                 print("Unable to connect to " + server + " on " + str(port))
@@ -395,6 +395,10 @@ try:
                                 "device_available": "false"
                             })
                 print("\n###########################")
+            if ssh_client:
+                print("Closing connection")
+                ssh_client.close()
+                print("\n")
 
     print("Data: " + str(nr_data))
     # Update new relic metric information
@@ -403,7 +407,3 @@ try:
 
 except Exception as e:
     print("Something went wrong: " + str(e))
-
-finally:
-    if ssh_client:
-        ssh_client.close()

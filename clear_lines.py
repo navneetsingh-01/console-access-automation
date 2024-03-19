@@ -23,26 +23,19 @@ def ssh_connect(server, port, idx):
 
 
 try:
-    file = open(
-        "/home/singhnavneet.su/console-access-automation/dc_list_complete.json")
+    servers = []
+
     # file = open(
-    #     "/Users/singhnavneet/Documents/projects/console_access /dc_list_complete.json")
+    #     "/home/singhnavneet.su/console-access-automation/dc_list_complete.json")
+    file = open(
+        "/Users/singhnavneet/Documents/projects/console_access /dc_list_complete.json")
     data = json.load(file)
     ts = data['ts']
     for item in ts:
         server = item['name']
-        ssh_username = usernames[0]
-        ssh_password = passwords[0]
-        try:
-            ssh_connect(server, 22, 0)
-        except Exception as e:
-            print("Unable to connect to " + server)
-        stdin, stdout, stderr = ssh_client.exec_command('sh line | in \*')
-        print(stdin)
-        print(stderr)
-        print("Output: ", stdout)
-        if ssh_client:
-            ssh_client.close()
+        servers.append(server)
 except Exception as e:
 
     print("Something went wrong: " + str(e))
+
+print(servers)
