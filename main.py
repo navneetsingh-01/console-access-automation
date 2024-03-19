@@ -398,7 +398,6 @@ try:
             if ssh_client:
                 print("Closing connection")
                 ssh_client.close()
-                print("\n")
 
     print("Data: " + str(nr_data))
     # Update new relic metric information
