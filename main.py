@@ -47,7 +47,7 @@ def check_login(conn, idx, sitecode):
     response = conn.recv(20000).decode('utf-8')
     print(response)
     if "password" in response.lower():
-        conn.send(passwords[idx] + "\n")
+        conn.send(passwords[idx] + "\n\n")
         buffer = 5
         while not conn.recv_ready() and buffer:
             print("NOT READY - recv_ready: " +
@@ -136,7 +136,7 @@ try:
 
             # Invoke interactive shell on the jump device
             conn = ssh_client.invoke_shell()
-            conn.send("\n")
+            conn.send("\n\n")
 
             # Wait while the response is not ready or the buffer timeout
             buffer_timeout = 20
@@ -187,7 +187,7 @@ try:
                         response = conn.recv(20000).decode('utf-8')
                         print(response)
                         if "password" in response.lower():
-                            conn.send(ssh_password + "\n")
+                            conn.send(ssh_password + "\n\n")
                             buffer = 5
                             while not conn.recv_ready() and buffer:
                                 print("NOT READY - recv_ready: " +
@@ -240,7 +240,7 @@ try:
                             response = conn.recv(20000).decode('utf-8')
                             print(response)
                             if "password" in response.lower():
-                                conn.send(ssh_password + "\n")
+                                conn.send(ssh_password + "\n\n")
                                 buffer = 5
                                 while not conn.recv_ready() and buffer:
                                     print("NOT READY - recv_ready: " +
@@ -323,7 +323,7 @@ try:
                             "device_available": "true"
                         })
                     elif "password" in output.lower():
-                        conn.send(ssh_password + "\n")
+                        conn.send(ssh_password + "\n\n")
                         buffer = 5
                         while not conn.recv_ready() and buffer:
                             print("NOT READY - recv_ready: " +
