@@ -201,6 +201,7 @@ try:
                             for line in response:
                                 device = found_device(line, sitecode)
                                 connection = "false"
+                                print("Reached here: " + device)
                                 if device:
                                     print("Device connected to port " +
                                           str(port) + " is: " + device)
