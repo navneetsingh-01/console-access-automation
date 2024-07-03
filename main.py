@@ -299,8 +299,9 @@ try:
                         response = output.splitlines()
                         for line in response:
                             val = line.lower()
+                            print(line)
                             if '#' in val:
-                                print("VAL: ", val)
+                                print("VAL: "+val)
                                 l = val.find(sitecode)
                                 r = val.find('#')
                                 print(l, r)
