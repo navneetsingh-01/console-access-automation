@@ -303,6 +303,7 @@ try:
                                 print("VAL: ", val)
                                 l = val.find(sitecode)
                                 r = val.find('#')
+                                print(l, r)
                                 print("Line: " + line)
                                 while l >= 0 and ((val[l] >= 'a' and val[l] <= 'z') or val[l] == '-'):
                                     l -= 1
