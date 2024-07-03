@@ -300,6 +300,7 @@ try:
                         for line in response:
                             val = line.lower()
                             if '#' in val:
+                                print("VAL: ", val)
                                 l = val.find(sitecode)
                                 r = val.find('#')
                                 while l >= 0 and ((val[l] >= 'a' and val[l] <= 'z') or val[l] == '-'):
