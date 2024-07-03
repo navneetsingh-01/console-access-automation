@@ -297,19 +297,15 @@ try:
                             })
                     elif "#" in output.lower():
                         response = output.splitlines()
+                        print(response)
                         for line in response:
                             val = line.lower()
                             if '#' in val:
-                                print(line)
-                                print("VAL: "+val)
                                 l = val.find(sitecode)
                                 r = val.find('#')
-                                print(l, r)
-                                print("Line: " + line)
                                 while l >= 0 and ((val[l] >= 'a' and val[l] <= 'z') or val[l] == '-'):
-                                    print(val[l])
                                     l -= 1
-                                device = val[l+1:r]
+                                device = line[l+1:r]
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
