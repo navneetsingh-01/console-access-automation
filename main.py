@@ -309,7 +309,7 @@ try:
                                 while l >= 0 and ((val[l] >= 'a' and val[l] <= 'z') or val[l] == '-'):
                                     print(val[l])
                                     l -= 1
-                                device = line[l+1:r]
+                                device = val[l+1:r]
                                 break
                         print("Device connected to port " +
                               str(port) + " is: " + device)
