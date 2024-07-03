@@ -92,7 +92,7 @@ def found_device(line, sitecode):
 
 try:
     file = open(
-        "/home/singhnavneet.su/console-access-automation/dc_list_complete.json")
+        "/home/singhnavneet.su/console-access-automation/dc_list.json")
     data = json.load(file)
 
     ts = data["ts"]
