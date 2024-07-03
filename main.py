@@ -297,7 +297,6 @@ try:
                             })
                     elif "#" in output.lower():
                         response = output.splitlines()
-                        print(response)
                         for line in response:
                             val = line.lower()
                             if '#' in val:
