@@ -396,7 +396,6 @@ try:
                             })
                 print("\n###########################")
             if ssh_client:
-                print("Closing connection")
                 ssh_client.close()
 
     print("Data: " + str(nr_data))
