@@ -187,7 +187,7 @@ try:
                         response = conn.recv(20000).decode('utf-8')
                         print(response)
                         if "password" in response.lower():
-                            conn.send(ssh_password + "\n\n")
+                            conn.send(ssh_password + "\n\r")
                             buffer = 5
                             time.sleep(5)
                             while not conn.recv_ready() and buffer:
