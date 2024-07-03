@@ -78,13 +78,9 @@ def found_device(line, sitecode):
     j = l
     i = l
     while j < len(t_line):
-        if cnt < 2:
-            if t_line[j] == '-':
-                cnt += 1
-        else:
-            if not ((t_line[j] >= 'a' and t_line[j] <= 'z') or (t_line[j] >= '0' and t_line[j] <= '9')):
-                device = line[i:j]
-                return device
+        if not ((t_line[j] >= 'a' and t_line[j] <= 'z') or (t_line[j] >= '0' and t_line[j] <= '9') or (t_line[j]=='-')):
+            device = line[i:j]
+            return device
         j += 1
 
     return ""
