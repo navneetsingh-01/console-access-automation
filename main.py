@@ -189,6 +189,7 @@ try:
                         if "password" in response.lower():
                             conn.send(ssh_password + "\n\n")
                             buffer = 5
+                            time.sleep(5)
                             while not conn.recv_ready() and buffer:
                                 print("NOT READY - recv_ready: " +
                                       str(conn.recv_ready()) + "\n")
