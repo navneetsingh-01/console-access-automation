@@ -4,10 +4,6 @@
       "name": "erf-ts",
       "lines": [
         {
-          "ROTY": 7,
-          "TTY": "0/1/6"
-        },
-        {
           "ROTY": 8,
           "TTY": "0/1/7"
         }
