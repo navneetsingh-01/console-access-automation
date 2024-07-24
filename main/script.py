@@ -297,7 +297,7 @@ try:
                         for line in response:
                             val = line.lower()
                             if '#' in val:
-                                l = val.find(sitecode)
+                                l = val.find(sitecode.lower())
                                 r = val.find('#')
                                 # while l >= 0 and ((val[l] >= 'a' and val[l] <= 'z') or val[l] == '-'):
                                 #     l -= 1
@@ -398,8 +398,8 @@ try:
 
     print("Data: " + str(nr_data))
     # Update new relic metric information
-    update_terminal_server_access(nr_data)
-    print("New relic Metric information updated")
+    # update_terminal_server_access(nr_data)
+    # print("New relic Metric information updated")
 
 except Exception as e:
     print("Something went wrong: " + str(e))
