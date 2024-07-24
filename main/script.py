@@ -25,6 +25,8 @@ def ssh_connect(server, port, idx, ssh_client):
 
 
 def valid_hostname(device):
+    if not device:
+        return False
     device = device.replace('-', '')
     return not device.isdigit()
 
