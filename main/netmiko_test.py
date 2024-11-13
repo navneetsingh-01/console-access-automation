@@ -1,5 +1,5 @@
 import os
-from netmiko import ConnectHandler
+from netmiko  import ConnectHandler
 
 net_connect = ConnectHandler(
     device_type="cisco_ios",
