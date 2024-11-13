@@ -7,10 +7,10 @@ from getpass import getpass
 try:
     net_connect = ConnectHandler(
         device_type="cisco_ios",
-        host="syd4-ts",
+        host="fra4-ts",
         username=os.getenv("TACACS_USERNAME"),
         password=getpass(),
-        port=5005
+        port=5003
     )
     print(net_connect.find_prompt())
     net_connect.disconnect()
