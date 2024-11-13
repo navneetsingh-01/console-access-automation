@@ -115,7 +115,7 @@ try:
                 ssh_client = paramiko.SSHClient()
                 ssh_client.set_missing_host_key_policy(
                     paramiko.AutoAddPolicy())
-                ssh_connect(server, port, 1, ssh_client)
+                ssh_connect(server, port, 0, ssh_client)
                 connected = True
             except Exception as e:
                 print("Unable to connect to " + server + " on " + str(port))
