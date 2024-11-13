@@ -6,6 +6,7 @@ net_connect = ConnectHandler(
     host="syd4-ts",
     username=os.getenv("TACACS_USERNAME"),
     password=os.getenv("TACACS_PASSWORD"),
+    port=5005
 )
 
 try: 
