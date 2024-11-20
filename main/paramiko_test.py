@@ -13,8 +13,8 @@ try:
     # Connect to the remote host
     client.connect(
         hostname="fra4-ts",
-        username=os.getenv("NETADMIN_SU_USERNAME"),
-        password=os.getenv("NETADMIN_SU_PASSWORD"),
+        username=os.getenv("NETADMIN_USERNAME"),
+        password=os.getenv("NETADMIN_PASSWORD"),
     )
 
     # Open an interactive SSH session
