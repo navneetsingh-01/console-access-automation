@@ -9,7 +9,7 @@ try:
         device_type="cisco_ios",
         host="fra4-ts",
         username=os.getenv("TACACS_USERNAME"),
-        password=os.getenv("TACACS_PASSWORD"),
+        password=getpass(),
     )
     output = net_connect.send_command("show ip interface brief")
     print(output)
