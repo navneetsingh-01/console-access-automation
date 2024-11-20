@@ -11,6 +11,8 @@ try:
         username=os.getenv("TACACS_USERNAME"),
         password=os.getenv("TACACS_PASSWORD"),
     )
+    output = net_connect.send_command("show ip interface brief")
+    print(output)
     print(net_connect.find_prompt())
     net_connect.disconnect()
 except Exception as e:
