@@ -9,7 +9,7 @@ try:
         device_type="cisco_ios",
         host="fra4-ts",
         username=os.getenv("TACACS_USERNAME"),
-        password=getpass(),
+        password=os.getenv("TACACS_PASSWORD"),
     )
     print(net_connect.find_prompt())
     net_connect.disconnect()
