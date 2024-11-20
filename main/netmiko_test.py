@@ -10,7 +10,6 @@ try:
         host="fra4-ts",
         username=os.getenv("TACACS_USERNAME"),
         password=getpass(),
-        port=5003
     )
     print(net_connect.find_prompt())
     net_connect.disconnect()
